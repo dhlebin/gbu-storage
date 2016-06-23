@@ -17,11 +17,12 @@ Route::get('/', function () {
 });
 
 $api->version('v1', function($api) {
-    $api->group(['namespace' => 'App\Api\Controllers'], function ($api) {
-        $api->get('item_group_attribute/get_list', 'ItemGroupAttributeController@index');
-        $api->get('item_group_attribute/get_by_id', 'ItemGroupAttributeController@getById');
-        $api->post('item_group_attribute/store', 'ItemGroupAttributeController@store');
-        $api->post('item_group_attribute/update', 'ItemGroupAttributeController@update');
-        $api->delete('item_group_attribute/remove', 'ItemGroupAttributeController@remove');
-    });
+    $api->group(
+        [
+            'namespace' => 'App\Api\Controllers',
+            'prefix' => 'v1'
+        ], function ($api) {
+            $api->resource('item_group_attribute', 'ItemGroupAttributeController');
+        }
+    );
 });

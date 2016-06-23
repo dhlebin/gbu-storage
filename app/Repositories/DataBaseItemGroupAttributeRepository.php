@@ -47,7 +47,6 @@ class DataBaseItemGroupAttributeRepository implements ItemGroupAttributeReposito
         $item = ItemGroupAttribute::find($id);
         if ($item) {
             $item->update($fields);
-            $item->save();
         }
         return $item;
     }

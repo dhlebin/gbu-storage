@@ -36,9 +36,9 @@ class ItemGroupAttributeController extends BaseController
         return $this->response->array($res);
     }
 
-    public function getById(Request $request) {
+    public function show($id) {
         $res = null;
-        if ($id = intval($request->get('id'))) {
+        if ($id = intval($id)) {
             $res = $this->itemGroupAttribute->getById($id);
         }
         if ($res) {
@@ -48,18 +48,17 @@ class ItemGroupAttributeController extends BaseController
         }
     }
 
-    public function update(ItemGroupAttributeUpdateRequest $request) {
-        $id = $request->get('id');
+    public function update($id, ItemGroupAttributeUpdateRequest $request) {
         $fields = $request->all();
         $res = $this->itemGroupAttribute->update($id, $fields);
         if ($res) {
-            return $this->response->item($res, new ItemTransformer());
+            return $this->response->item($res, new ItemGroupAttributeTransformer());
         }
         $this->response->errorNotFound('Item not found.');
     }
 
-    public function remove(Request $request) {
-        if ($id = intval($request->get('id'))) {
+    public function destroy($id) {
+        if ($id = intval($id)) {
             $res = $this->itemGroupAttribute->remove($id);
         }
         if ($res) {
