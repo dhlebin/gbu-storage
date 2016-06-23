@@ -1,0 +1,71 @@
+<?php namespace App\Api\Controllers;
+
+use App\Http\Requests\ItemGroupAttributeUpdateRequest;
+use Illuminate\Http\Request;
+
+use App\Http\Requests\ItemGroupAttributeStoreRequest;
+
+use App\Contracts\Repositories\ItemGroupAttributeRepository as ItemGroupAttribute;
+use App\Transformers\ItemGroupAttributeTransformer;
+
+use Response;
+use Validator;
+
+class ItemGroupAttributeController extends BaseController
+{
+    //
+    protected $itemGroupAttribute;
+
+    public function __construct(ItemGroupAttribute $itemGroupAttribute) {
+        $this->itemGroupAttribute = $itemGroupAttribute;
+    }
+
+    public function index(Request $request) {
+        $limit = $request->get('limit');
+        $offset = $request->get('offset');
+        $condition = "";
+        $items = $this->itemGroupAttribute->getList($condition, $limit, $offset);
+        return $this->response->collection(
+            $items, new ItemGroupAttributeTransformer()
+        );
+    }
+
+    public function store(ItemGroupAttributeStoreRequest $request) {
+        $fields = $request->all();
+        $res = $this->itemGroupAttribute->store($fields);
+        return $this->response->array($res);
+    }
+
+    public function getById(Request $request) {
+        $res = null;
+        if ($id = intval($request->get('id'))) {
+            $res = $this->itemGroupAttribute->getById($id);
+        }
+        if ($res) {
+            return $this->response->item($res, new ItemGroupAttributeTransformer());
+        } else {
+            $this->response->error('NotFound.', 404);
+        }
+    }
+
+    public function update(ItemGroupAttributeUpdateRequest $request) {
+        $id = $request->get('id');
+        $fields = $request->all();
+        $res = $this->itemGroupAttribute->update($id, $fields);
+        if ($res) {
+            return $this->response->item($res, new ItemTransformer());
+        }
+        $this->response->errorNotFound('Item not found.');
+    }
+
+    public function remove(Request $request) {
+        if ($id = intval($request->get('id'))) {
+            $res = $this->itemGroupAttribute->remove($id);
+        }
+        if ($res) {
+            return $this->response->array($res);
+        } else {
+            $this->response->errorNotFound('Item not found.');
+        }
+    }
+}
