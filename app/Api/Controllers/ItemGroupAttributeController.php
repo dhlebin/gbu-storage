@@ -16,55 +16,51 @@ class ItemGroupAttributeController extends BaseController
     //
     protected $itemGroupAttribute;
 
-    public function __construct(ItemGroupAttribute $itemGroupAttribute) {
+    public function __construct(ItemGroupAttribute $itemGroupAttribute)
+    {
         $this->itemGroupAttribute = $itemGroupAttribute;
     }
 
-    public function index(Request $request) {
-        $limit = $request->get('limit');
-        $offset = $request->get('offset');
-        $condition = "";
-        $items = $this->itemGroupAttribute->getList($condition, $limit, $offset);
-        return $this->response->collection(
-            $items, new ItemGroupAttributeTransformer()
-        );
+    public function index()
+    {
+        $items = $this->itemGroupAttribute->getList();
+        return $this->response->paginator($items, new ItemGroupAttributeTransformer);
     }
 
-    public function store(ItemGroupAttributeStoreRequest $request) {
+    public function store(ItemGroupAttributeStoreRequest $request)
+    {
         $fields = $request->all();
         $res = $this->itemGroupAttribute->store($fields);
-        return $this->response->array($res);
+        return $this->response->item($res, new ItemGroupAttributeTransformer)->setStatusCode(201);
     }
 
-    public function show($id) {
-        $res = null;
-        if ($id = intval($id)) {
-            $res = $this->itemGroupAttribute->getById($id);
-        }
+    public function show($id)
+    {
+        $res = $this->itemGroupAttribute->getById($id);
         if ($res) {
-            return $this->response->item($res, new ItemGroupAttributeTransformer());
+            return $this->response->item($res, new ItemGroupAttributeTransformer);
         } else {
-            $this->response->error('NotFound.', 404);
+            $this->response->errorNotFound();
         }
     }
 
-    public function update($id, ItemGroupAttributeUpdateRequest $request) {
+    public function update($id, ItemGroupAttributeUpdateRequest $request)
+    {
         $fields = $request->all();
         $res = $this->itemGroupAttribute->update($id, $fields);
         if ($res) {
-            return $this->response->item($res, new ItemGroupAttributeTransformer());
+            return $this->response->item($res, new ItemGroupAttributeTransformer);
         }
         $this->response->errorNotFound('Item not found.');
     }
 
-    public function destroy($id) {
-        if ($id = intval($id)) {
-            $res = $this->itemGroupAttribute->remove($id);
-        }
+    public function destroy($id)
+    {
+        $res = $this->itemGroupAttribute->remove($id);
         if ($res) {
-            return $this->response->array($res);
+            return $this->response->noContent();
         } else {
-            $this->response->errorNotFound('Item not found.');
+            $this->response->errorBadRequest();
         }
     }
 }

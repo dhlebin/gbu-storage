@@ -1,45 +1,31 @@
 <?php namespace App\Repositories;
+
 /**
  * Created by PhpStorm.
  * User: Maxim
  * Date: 22.06.2016
  * Time: 9:22
  */
-use Illuminate\Http\Request;
 use App\Contracts\Repositories\ItemGroupAttributeRepository;
 use App\Models\ItemGroupAttribute;
 
-class DataBaseItemGroupAttributeRepository implements ItemGroupAttributeRepository {
+class DataBaseItemGroupAttributeRepository implements ItemGroupAttributeRepository
+{
+    const ITEMS_ON_PAGE = 10;
 
-    public $limit = 10;
-
-    public $offset = 0;
-
-    public function getList($condition, $limit, $offset)
+    public function getList($condition = [], $columns = ['*'])
     {
-        if ($limit = intval($limit)) {
-            $this->limit = $limit;
-        }
-        if ($offset = intval($offset)) {
-            $this->offset = $offset;
-        }
-        return ItemGroupAttribute::skip($this->offset)->take($this->limit)->get();
+        return ItemGroupAttribute::paginate(self::ITEMS_ON_PAGE, $columns);
     }
 
-    public function getById($id)
+    public function getById($id, $columns = ['*'])
     {
-        return ItemGroupAttribute::find($id);
+        return ItemGroupAttribute::find($id, $columns);
     }
 
     public function remove($id)
     {
-        $res = null;
-        $item = ItemGroupAttribute::find($id);
-        if ($item) {
-            $item->delete();
-            $res = array('status' => 'success');
-        }
-        return $res;
+        return ItemGroupAttribute::destroy($id);
     }
 
     public function update($id, $fields)
@@ -51,8 +37,9 @@ class DataBaseItemGroupAttributeRepository implements ItemGroupAttributeReposito
         return $item;
     }
 
-    public function store($fields) {
-        $lastId = ItemGroupAttribute::create($fields)->id;
-        return array('id' => $lastId);
+    public function store($fields)
+    {
+        $model = ItemGroupAttribute::create($fields);
+        return $model;
     }
 }

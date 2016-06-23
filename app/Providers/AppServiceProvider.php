@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Contracts\Repositories\ItemGroupAttributeRepository;
+use App\Repositories\DataBaseItemGroupAttributeRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            ItemGroupAttributeRepository::class,
+            DataBaseItemGroupAttributeRepository::class
+        );
     }
 }
