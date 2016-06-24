@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Api\Requests;
 
 use Dingo\Api\Http\FormRequest;
 
-class ItemGroupAttributeUpdateRequest extends FormRequest
+class UpdateItemAttributeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class ItemGroupAttributeUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'max:255',
-            'alias' => 'max:255',
-            'group_id' => 'numeric',
-            'unit_id' => 'numeric'
+            'name' => 'max:255'
         ];
     }
 }

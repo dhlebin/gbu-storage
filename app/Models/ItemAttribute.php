@@ -6,19 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * App\Models\ItemGroupAttribute
+ * App\Models\ItemAttribute
  *
  * @mixin \Eloquent
  */
-class ItemGroupAttribute extends Model
+class ItemAttribute extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'item_group_attribute';
-
-    protected $fillable = ['name', 'alias', 'unit_id', 'group_id'];
+    protected $fillable = ['name', 'alias', 'type', 'group_id'];
 
     protected $dates = ['deleted_at'];
-
 
 }

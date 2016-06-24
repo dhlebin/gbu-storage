@@ -16,13 +16,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-$api->version('v1', function($api) {
+$api->version('v1', function(Dingo\Api\Routing\Router $api) {
     $api->group(
         [
             'namespace' => 'App\Api\Controllers',
             'prefix' => 'v1'
-        ], function ($api) {
-            $api->resource('item_group_attribute', 'ItemGroupAttributeController');
+        ], function (Dingo\Api\Routing\Router $api) {
+            $api->resource('item_attributes', 'ItemAttributesController');
+            #$api->resource('attributes', 'AttributesController');
         }
     );
 });
