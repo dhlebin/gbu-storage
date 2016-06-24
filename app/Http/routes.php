@@ -10,6 +10,10 @@ $api->version('v1', function($api) {
         ],
         function ($api) {
             $api->resource('itemgroups', 'ItemGroupsController');
+            $api->get('itemgroups/{id}/parent', 'ItemgroupsController@parent');
+            $api->get('itemgroups/{id}/children', 'ItemgroupsController@children');
+            $api->get('itemgroups/{id}/ancestors', 'ItemgroupsController@ancestors');
+
             $api->resource('items', 'ItemsController');
         }
     );

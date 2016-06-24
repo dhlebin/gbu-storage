@@ -13,7 +13,7 @@ class BaseDbRepository implements BaseRepositoryInterface
 
     public function getList($condition = [], $columns = ['*'])
     {
-        return $this->mainModel->paginate(self::ITEMS_ON_PAGE, $columns);
+        return $this->mainModel->where($condition)->paginate(self::ITEMS_ON_PAGE, $columns);
     }
 
     public function getById($id, $columns = ['*'])

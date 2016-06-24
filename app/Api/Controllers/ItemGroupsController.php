@@ -2,86 +2,73 @@
 
 namespace App\Api\Controllers;
 
-use Illuminate\Http\Request;
+use App\Api\Requests\ItemGroupsUpdateRequest;
+use App\Api\Requests\ItemGroupsStoreRequest;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Contracts\Repositories\ItemGroupsRepository;
+use App\Transformers\ItemGroupsTransformer;
 
-class ItemGroupsController extends Controller
+class ItemGroupsController extends BaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(ItemGroupsRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     public function index()
     {
-        //
+        $items = $this->repository->getList();
+        return $this->response->collection($items, new ItemGroupsTransformer);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function parent($id)
     {
-        //
+        $item = $this->repository->parent($id);
+        return $this->response->item($item, new ItemGroupsTransformer);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function children($id)
     {
-        //
+        $items = $this->repository->children($id);
+        return $this->response->collection($items, new ItemGroupsTransformer);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function ancestors($id)
+    {
+        $items = $this->repository->ancestors($id);
+        return $this->response->collection($items, new ItemGroupsTransformer);
+    }
+
+    public function store(ItemsStoreRequest $request)
+    {
+        $fields = $request->all();
+        $res = $this->repository->store($fields);
+        return $this->response->item($res, new ItemGroupsTransformer)->setStatusCode(201);
+    }
+
     public function show($id)
     {
-        //
+        $item = $this->repository->getById($id);
+        return $this->response->item($item, new ItemGroupsTransformer);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update($id, ItemsUpdateRequest $request)
     {
-        //
+        $fields = $request->all();
+        $res = $this->repository->update($id, $fields);
+        if ($res) {
+            return $this->response->item($res, new ItemGroupsTransformer);
+        }
+        $this->response->errorNotFound('Item not found.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $res = $this->repository->remove($id);
+        if ($res) {
+            return $this->response->noContent();
+        } else {
+            $this->response->errorBadRequest();
+        }
     }
 }
