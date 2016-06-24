@@ -9,12 +9,12 @@ $api->version('v1', function (Dingo\Api\Routing\Router $api) {
             'prefix'    => 'v1'
         ],
         function (Dingo\Api\Routing\Router $api) {
-            $api->resource('itemgroups', 'ItemGroupsController');
             $api->resource('items', 'ItemsController');
             $api->resource('item_attributes', 'ItemAttributesController');
-            $api->get('itemgroups/{id}/parent', 'ItemgroupsController@parent');
-            $api->get('itemgroups/{id}/children', 'ItemgroupsController@children');
-            $api->get('itemgroups/{id}/ancestors', 'ItemgroupsController@ancestors');
+            $api->get('itemgroups/{id}/parent', 'ItemGroupsController@parent');
+            $api->get('itemgroups/{id}/children', 'ItemGroupsController@children');
+            $api->get('itemgroups/{id}/ancestors', 'ItemGroupsController@ancestors');
+            $api->resource('itemgroups', 'ItemGroupsController');
             $api->resource('units', 'UnitsController');
         }
     );

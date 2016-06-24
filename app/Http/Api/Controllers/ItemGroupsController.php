@@ -2,8 +2,8 @@
 
 namespace App\Http\Api\Controllers;
 
-use App\Api\Requests\ItemGroupsUpdateRequest;
-use App\Api\Requests\ItemGroupsStoreRequest;
+use App\Http\Api\Requests\StoreItemGroupRequest;
+use App\Http\Api\Requests\UpdateItemGroupRequest;
 
 use App\Contracts\Repositories\ItemGroupsRepository;
 use App\Transformers\ItemGroupsTransformer;
@@ -39,7 +39,7 @@ class ItemGroupsController extends BaseController
         return $this->response->collection($items, new ItemGroupsTransformer);
     }
 
-    public function store(ItemsStoreRequest $request)
+    public function store(StoreItemGroupRequest $request)
     {
         $fields = $request->all();
         $res = $this->repository->store($fields);
@@ -52,7 +52,7 @@ class ItemGroupsController extends BaseController
         return $this->response->item($item, new ItemGroupsTransformer);
     }
 
-    public function update($id, ItemsUpdateRequest $request)
+    public function update($id, UpdateItemGroupRequest $request)
     {
         $fields = $request->all();
         $res = $this->repository->update($id, $fields);

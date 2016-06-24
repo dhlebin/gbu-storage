@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Api\Controllers;
+namespace App\Http\Api\Controllers;
 
-use App\Api\Requests\ItemsUpdateRequest;
-use App\Api\Requests\ItemsStoreRequest;
+use App\Http\Api\Requests\ItemsUpdateRequest;
+use App\Http\Api\Requests\ItemsStoreRequest;
 
 use App\Contracts\Repositories\ItemsRepository;
 use App\Transformers\ItemsTransformer;
