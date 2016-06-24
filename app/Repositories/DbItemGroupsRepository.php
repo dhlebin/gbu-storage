@@ -2,52 +2,33 @@
 
 namespace App\Repositories;
 
-use App\Contracts\Repositories\ItemsRepository as ItemsRepositoryInterface;
+use App\Contracts\Repositories\ItemGroupsRepository as ItemGroupsRepositoryInterface;
 use App\Models\ItemGroup;
 
-class DbItemGroupsRepository implements ItemsRepositoryInterface
+class DbItemGroupsRepository extends BaseDbRepository implements ItemGroupsRepositoryInterface
 {
-    public function __construct(ItemGroup $itemGroupModel)
+    public function getList($condition = [], $columns = ['*'])
     {
-        $this->itemGroupModel = $itemGroupModel;
-    }
-
-    public function find($id)
-    {
-        return $this->itemGroupModel->findOrFail($id);
-    }
-
-    public function search($data)
-    {
-    }
-
-    public function create($data)
-    {
-        
-    }
-
-    public function update($data)
-    {
-
+        return $this->model->get()->toFlatTree();
     }
 
     public function parent($id)
     {
-
+        return $this->model->findOrFail($id)->parent()->get()->first();
     }
 
     public function children($id)
     {
-
+        return $this->model->where(['parent_id' => $id])->get()->toFlatTree();
     }
 
-    public function descendants($id)
+    public function ancestors($id)
     {
-
+        return $this->model->findOrFail($id)->ancestors()->get();
     }
 
-    public function tree($id)
+    protected function getModelName()
     {
-
+        return ItemGroup::class;
     }
 }

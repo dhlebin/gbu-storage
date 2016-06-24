@@ -8,7 +8,5 @@ interface ItemGroupsRepository extends BaseRepository
 
     function children($id);
 
-    function descendants($id);
-
-    function tree($id);
+    function ancestors($id);
 }

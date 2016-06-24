@@ -41,6 +41,13 @@ class ItemGroupsSeeder extends Seeder
         ]);
 
         ItemGroup::create([
+            'alias' => 'subamorphous',
+            'name' => 'Подкатегория аморфных веществ',
+            'description' => 'Подкатегория ага',
+            'parent_id' => 4
+        ]);
+
+        ItemGroup::create([
             'alias' => 'minerals',
             'name' => 'Минералы',
             'description' => 'Минералы',

@@ -11,6 +11,9 @@ $api->version('v1', function (Dingo\Api\Routing\Router $api) {
         function (Dingo\Api\Routing\Router $api) {
             $api->resource('itemgroups', 'ItemGroupsController');
             $api->resource('items', 'ItemsController');
+            $api->get('itemgroups/{id}/parent', 'ItemgroupsController@parent');
+            $api->get('itemgroups/{id}/children', 'ItemgroupsController@children');
+            $api->get('itemgroups/{id}/ancestors', 'ItemgroupsController@ancestors');
             $api->resource('item_attributes', 'ItemAttributesController');
         }
     );
