@@ -11,6 +11,19 @@
 |
 */
 
+$api = app('Dingo\Api\Routing\Router');
+
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
+});
+
+$api->version('v1', function ($api) {
+	$api->group(
+		[
+			'namespace' => 'App\Http\Api\Controllers',
+			'prefix' => 'v1'
+		], function ($api) {
+			$api->resource('units', 'UnitsController');
+		}
+	);
 });
