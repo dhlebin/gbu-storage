@@ -1,14 +1,9 @@
-<?php namespace App\Contracts\Repositories;
-/**
- * Created by PhpStorm.
- * User: Maxim
- * Date: 22.06.2016
- * Time: 15:26
- */
+<?php
 
-use Illuminate\Http\Request;
+namespace App\Contracts\Repositories;
 
-interface BaseRepository {
+interface BaseRepository
+{
 
     public function getList($condition = [], $columns = ['*']);
 

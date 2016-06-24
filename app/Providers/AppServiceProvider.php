@@ -15,7 +15,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->bind(
+            'App\Contracts\Repositories\ItemsRepository',
+            'App\Repositories\DbItemsRepository'
+        );
+        $this->app->bind(
+            'App\Contracts\Repositories\ItemGroupsRepository',
+            'App\Repositories\DbItemGroupsRepository'
+        );
     }
 
     /**

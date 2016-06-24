@@ -1,4 +1,4 @@
-<?php namespace App\Api\Controllers;
+<?php namespace App\Http\Api\Controllers;
 
 use App\Api\Requests\StoreItemAttributeRequest;
 use App\Api\Requests\UpdateItemAttributeRequest;

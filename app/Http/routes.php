@@ -1,29 +1,17 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-$api = app('Dingo\Api\Routing\Router');
+$api = app('api.router');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-$api->version('v1', function(Dingo\Api\Routing\Router $api) {
+$api->version('v1', function (Dingo\Api\Routing\Router $api) {
     $api->group(
         [
-            'namespace' => 'App\Api\Controllers',
-            'prefix' => 'v1'
-        ], function (Dingo\Api\Routing\Router $api) {
+            'namespace' => 'App\Http\Api\Controllers',
+            'prefix'    => 'v1'
+        ],
+        function (Dingo\Api\Routing\Router $api) {
+            $api->resource('itemgroups', 'ItemGroupsController');
+            $api->resource('items', 'ItemsController');
             $api->resource('item_attributes', 'ItemAttributesController');
-            #$api->resource('attributes', 'AttributesController');
         }
     );
 });
