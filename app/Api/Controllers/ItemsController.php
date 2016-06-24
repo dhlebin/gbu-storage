@@ -2,93 +2,55 @@
 
 namespace App\Api\Controllers;
 
-use Illuminate\Http\Request;
+use App\Api\Requests\ItemsUpdateRequest;
+use App\Api\Requests\ItemsStoreRequest;
 
-use App\Http\Requests;
 use App\Contracts\Repositories\ItemsRepository;
+use App\Transformers\ItemsTransformer;
 
-class ItemsController extends Controller
+class ItemsController extends BaseController
 {
     public function __construct(ItemsRepository $itemsRepo)
     {
         $this->itemsRepo = $itemsRepo;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $data = $this->itemsRepo->all();
-        return $data;
+        $items = $this->itemsRepo->getList();
+        return $this->response->paginator($items, new ItemsTransformer);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function store(ItemsStoreRequest $request)
     {
-        //
+        $fields = $request->all();
+        $res = $this->itemsRepo->store($fields);
+        return $this->response->item($res, new ItemsTransformer)->setStatusCode(201);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        $item = $this->itemsRepo->find($id);
-        return $item;
+        $item = $this->itemsRepo->getById($id);
+        return $this->response->item($item, new ItemsTransformer);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update($id, ItemsUpdateRequest $request)
     {
-        //
+        $fields = $request->all();
+        $res = $this->itemsRepo->update($id, $fields);
+        if ($res) {
+            return $this->response->item($res, new ItemsTransformer);
+        }
+        $this->response->errorNotFound('Item not found.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $res = $this->itemsRepo->remove($id);
+        if ($res) {
+            return $this->response->noContent();
+        } else {
+            $this->response->errorBadRequest();
+        }
     }
 }
