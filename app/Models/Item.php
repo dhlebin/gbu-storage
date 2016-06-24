@@ -1,13 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\ItemGroup;
 
 class Item extends Model
 {
-    public $timestamps = false;
+    protected $fillable = ['alias', 'name', 'description', 'group_id', 'is_available'];
 
     public function group()
     {

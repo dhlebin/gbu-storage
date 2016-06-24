@@ -1,14 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Kalnoy\Nestedset\NodeTrait;
-use App\Item;
 
 class ItemGroup extends Model
 {
     use NodeTrait;
+
+    protected $fillable = ['alias', 'name', 'description', 'is_available', 'parent_id'];
 
     public $timestamps = false;
 

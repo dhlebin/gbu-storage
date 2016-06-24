@@ -3,9 +3,9 @@
 namespace App\Repositories;
 
 use App\Contracts\Repositories\ItemsRepository as ItemsRepositoryInterface;
-use App\Item;
+use App\Models\Item;
 
-class ItemsRepositoryDatabase implements ItemsRepositoryInterface
+class DbItemsRepository implements ItemsRepositoryInterface
 {
     public function __construct(Item $itemModel)
     {

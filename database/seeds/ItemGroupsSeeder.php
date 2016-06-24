@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\ItemGroup;
+use App\Models\ItemGroup;
 
 class ItemGroupsSeeder extends Seeder
 {

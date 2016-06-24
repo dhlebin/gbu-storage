@@ -15,26 +15,21 @@ class CreateItemsAndGroups extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('alias', 255);
-            $table->string('name', 255);
-            $table->string('description', 255)->nullable();
-            $table->integer('group_id');
-            $table->boolean('is_available')->default(true);
+            $table->string('alias')->unique();
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->integer('group_id')->index();
+            $table->boolean('is_available')->default(true)->index();
 
-            $table->unique('alias');
-            $table->index('group_id');
-            $table->index('is_available');
+            $table->timestamps();
         });
 
         Schema::create('item_groups', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('alias', 255);
-            $table->string('name', 255);
-            $table->string('description', 255)->nullable();
-            $table->boolean('is_available')->default(true);
-
-            $table->unique('alias');
-            $table->index('is_available');
+            $table->string('alias')->unique();
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->boolean('is_available')->default(true)->index();
 
             NestedSet::columns($table);
         });
