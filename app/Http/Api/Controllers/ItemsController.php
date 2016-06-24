@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Api\Controllers;
+namespace App\Api\Controllers;
 
 use App\Api\Requests\ItemsUpdateRequest;
 use App\Api\Requests\ItemsStoreRequest;
