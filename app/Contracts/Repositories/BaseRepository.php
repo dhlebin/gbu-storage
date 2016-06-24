@@ -4,11 +4,15 @@ namespace App\Contracts\Repositories;
 
 interface BaseRepository
 {
-    public function find($id);
 
-    public function search($data);
+    public function getList($condition = [], $columns = ['*']);
 
-    public function create($data);
+    public function remove($id);
 
-    public function update($data);
+    public function update($id, $fields);
+
+    public function getById($id, $columns = ['*']);
+
+    public function store($fields);
+
 }
