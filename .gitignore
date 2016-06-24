@@ -4,6 +4,6 @@
 Homestead.yaml
 Homestead.json
 .env
-.idea/
+/.idea
 /composer.lock
 /_ide_helper.php
