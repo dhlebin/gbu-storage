@@ -10,7 +10,8 @@
         "kalnoy/nestedset": "^4.1",
         "dingo/api": "1.0.x@dev",
         "barryvdh/laravel-ide-helper": "^2.2",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -6,10 +6,14 @@ use App\Http\Api\Requests\StoreItemGroupRequest;
 use App\Http\Api\Requests\UpdateItemGroupRequest;
 
 use App\Contracts\Repositories\ItemGroupsRepository;
+use App\Repositories\DbItemGroupsRepository;
 use App\Transformers\ItemGroupsTransformer;
 
 class ItemGroupsController extends BaseController
 {
+    /** @var DbItemGroupsRepository ItemGroupsRepository */
+    protected $repository;
+    
     public function __construct(ItemGroupsRepository $repository)
     {
         $this->repository = $repository;

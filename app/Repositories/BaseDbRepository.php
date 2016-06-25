@@ -26,7 +26,7 @@ abstract class BaseDbRepository implements BaseRepositoryInterface
 
     public function getById($id, $columns = ['*'])
     {
-        return $this->model->findOrFail($id, $columns);
+        return $this->model->find($id, $columns);
     }
 
     public function remove($id)

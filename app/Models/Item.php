@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
-use App\ItemsAttributesValue;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Item
+ *
+ * @mixin \Eloquent
+ */
 class Item extends Model
 {
     protected $fillable = ['alias', 'name', 'description', 'group_id', 'is_available'];
@@ -16,6 +20,17 @@ class Item extends Model
 
     public function attributes()
     {
-        return $this->hasMany(ItemsAttributesValue::class);
+        return $this->hasMany(ItemAttributesValue::class)->with('attribute');
+    }
+
+    public function saveAttributes($attributes)
+    {
+        foreach ($attributes as $id => $value) {
+            $model = ItemAttributesValue::where('item_id', $this->id)
+                ->where('attribute_id', $id)
+                ->first() ?: new ItemAttributesValue;
+            $model->fill(['attribute_id' => $id, 'value' => $value]);
+            $this->attributes()->save($model);
+        }
     }
 }

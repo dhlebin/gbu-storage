@@ -9,7 +9,7 @@ class DbItemGroupsRepository extends BaseDbRepository implements ItemGroupsRepos
 {
     public function getList($condition = [], $columns = ['*'])
     {
-        return $this->model->get()->toFlatTree();
+        return $this->model->withDepth()->get()->toFlatTree();
     }
 
     public function parent($id)
