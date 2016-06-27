@@ -23,6 +23,14 @@ class Item extends Model
         return $this->hasMany(ItemAttributesValue::class)->with('attribute');
     }
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($model) {
+            $model->attributes()->delete();
+        });
+    }
+
     public function saveAttributes($attributes)
     {
         foreach ($attributes as $id => $value) {
