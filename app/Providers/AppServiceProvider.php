@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Contracts\Repositories\ItemAttributesRepository;
+use App\Contracts\Repositories\DepotItemOperationsRepository;
 use App\Repositories\DbItemAttributesRepository;
+use App\Repositories\DbDepotItemOperationsRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\Repositories\UnitsRepository;
 use App\Repositories\DbUnitsRepository;
@@ -42,6 +44,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             'App\Contracts\Repositories\ItemGroupsRepository',
             'App\Repositories\DbItemGroupsRepository'
+        );
+        $this->app->bind(
+            DepotItemOperationsRepository::class,
+            DbDepotItemOperationsRepository::class
         );
     }
 }
