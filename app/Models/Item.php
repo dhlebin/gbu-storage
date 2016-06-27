@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Item extends Model
 {
-    protected $fillable = ['alias', 'name', 'description', 'group_id', 'is_available'];
+    protected $fillable = ['alias', 'name', 'description', 'group_id', 'is_available', 'unit_id'];
 
     public function group()
     {

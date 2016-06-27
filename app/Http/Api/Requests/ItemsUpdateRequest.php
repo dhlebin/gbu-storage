@@ -15,7 +15,8 @@ class ItemsUpdateRequest extends Request
             'name' => 'max:255',
             'alias' => 'max:255',
             'group_id' => 'numeric',
-            'is_available' => 'boolean'
+            'is_available' => 'boolean',
+			'unit_id' => 'numeric'
         ];
     }
 }

@@ -93,8 +93,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'unit' => [
+            'related_with_item' => 'This Unit related with Item'
         ],
     ],
 

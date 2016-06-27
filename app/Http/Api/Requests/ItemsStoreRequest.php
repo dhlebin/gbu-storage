@@ -15,7 +15,8 @@ class ItemsStoreRequest extends Request
             'name' => 'required|max:255',
             'alias' => 'required|max:255',
             'group_id' => 'required|numeric',
-            'is_available' => 'boolean'
+            'is_available' => 'boolean',
+			'unit_id' => 'required|numeric'
         ];
     }
 }
