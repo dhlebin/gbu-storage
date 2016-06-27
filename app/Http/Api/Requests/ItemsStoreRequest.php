@@ -2,7 +2,9 @@
 
 namespace App\Http\Api\Requests;
 
-class ItemsStoreRequest extends Request
+use Dingo\Api\Http\FormRequest;
+
+class ItemsStoreRequest extends FormRequest
 {
     public function authorize()
     {

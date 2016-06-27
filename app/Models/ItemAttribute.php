@@ -18,4 +18,16 @@ class ItemAttribute extends Model
 
     protected $dates = ['deleted_at'];
 
+    public function values()
+    {
+        return $this->hasMany(ItemAttributesValue::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($model) {
+            $model->values()->delete();
+        });
+    }
 }
