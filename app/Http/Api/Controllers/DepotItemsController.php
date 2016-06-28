@@ -2,6 +2,7 @@
 
 namespace App\Http\Api\Controllers;
 
+use App\Contracts\Repositories\DepotItemsRepository;
 use App\Http\Api\Requests\StoreDepotItemRequest;
 use App\Http\Api\Requests\UpdateDepotItemRequest;
 use App\Http\Requests;
@@ -13,7 +14,7 @@ class DepotItemsController extends BaseController
     /** @var DbDepotItemsRepository */
     protected $repository;
 
-    public function __construct(DbDepotItemsRepository $depotItems)
+    public function __construct(DepotItemsRepository $depotItems)
     {
         $this->repository = $depotItems;
     }
