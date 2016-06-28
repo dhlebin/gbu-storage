@@ -18,9 +18,9 @@ class UpdateRequest extends FormRequest {
 
     public function rules() {
         return [
-            'item_id' => 'required|integer',
-            'depot_item_id' => 'required|integer',
-            'depot_id' => 'required|integer',
+            'item_id' => 'required|exists:items,id',
+            'depot_item_id' => 'required|exists:depot_items,id',
+            'depot_id' => 'required|exists:depots,id',
             'status' => 'required|in:in_progress,completed,rejected',
             'type' => 'required|in:change,move,correct',
             'delta' => 'required|numeric',

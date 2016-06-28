@@ -15,7 +15,7 @@ class DepotItemOpAddField extends Migration
         Schema::table('depot_item_operations', function(Blueprint $table) {
             $table->enum('type', ['change', 'move', 'correct'])->addField();
             $table->decimal('delta', 30, 2)->addField();
-            $table->integer('opposite_operation_id')->unique()->index()->nullable()->addField();
+            $table->integer('opposite_operation_id')->index()->nullable()->addField();
         });
     }
 
