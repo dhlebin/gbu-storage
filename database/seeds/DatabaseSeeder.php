@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ItemGroupsSeeder::class);
         $this->call(ItemsSeeder::class);
         $this->call(ItemAttributesSeeder::class);
+        $this->call(DepotsSeeder::class);
+        $this->call(DepotItemsSeeder::class);
         $this->call(DepotItemOperationSeeder::class);
     }
 }
