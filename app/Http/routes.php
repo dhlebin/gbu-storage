@@ -20,6 +20,13 @@ $api->version('v1', function (Dingo\Api\Routing\Router $api) {
             $api->resource('units', 'UnitsController');
             $api->resource('depots', 'DepotsController');
             $api->resource('depot_items', 'DepotItemsController');
+            $api->resource(
+                'depot_item_operations',
+                'DepotItemOperationsController',
+                [
+                    'except' => ['destroy']
+                ]
+            );
         }
     );
 });
