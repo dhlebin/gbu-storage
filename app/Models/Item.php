@@ -20,7 +20,7 @@ class Item extends Model
 
 	public function unit()
 	{
-		return $this->belongsTo('App\Models\Unit');
+		return $this->belongsTo(Unit::class);
 	}
 
     public function attributes()

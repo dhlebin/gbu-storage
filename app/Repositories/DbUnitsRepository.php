@@ -9,9 +9,7 @@
 namespace App\Repositories;
 
 use App\Contracts\Repositories\UnitsRepository;
-use App\Models\Item;
 use App\Models\Unit;
-use App\Models\User;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -27,7 +25,7 @@ class DbUnitsRepository extends BaseDbRepository implements  UnitsRepository
 		$unit = $this->model->find($id);
 		
 		if (!$unit) 
-			throw new NotFoundHttpException(trans('validation.custom.item.not_found'));
+			throw new NotFoundHttpException(trans('validation.custom.unit.not_found'));
 
 		if ($unit->items()->count()) 
 			throw new ConflictHttpException(trans('validation.custom.unit.related_with_item'));
