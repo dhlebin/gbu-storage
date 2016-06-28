@@ -12,6 +12,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class DepotItemOperation extends Model
 {
-    protected $fillable = ['item_id', 'depot_id', 'depot_item_id', 'status'];
-    //
+    protected $fillable = [
+        'item_id',
+        'depot_id',
+        'depot_item_id',
+        'status',
+        'type',
+        'delta',
+        'opposite_operation_id'
+    ];
+
 }
