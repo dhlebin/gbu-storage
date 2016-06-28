@@ -23,8 +23,7 @@ class StoreRequest extends FormRequest {
             'depot_id' => 'required|exists:depots,id',
             'status' => 'required|in:in_progress,completed,rejected',
             'type' => 'required|in:change,move,correct',
-            'delta' => 'required|numeric',
-            'opposite_operation_id' => 'required|integer'
+            'opposite_operation_id' => 'integer'
         ];
     }
 

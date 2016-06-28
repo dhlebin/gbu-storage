@@ -9,21 +9,21 @@ use App\Contracts\Repositories\DepotItemOperationsRepository as DepotItemOperati
 
 class DepotItemOperationsController extends BaseController
 {
-    protected $depotItemOperations;
+    protected $repository;
 
     function __construct(DepotItemOperations $depot)
     {
-        $this->depotItemOperations = $depot;
+        $this->repository = $depot;
     }
 
     public function index() {
-        $depotItemOp = $this->depotItemOperations->getList();
+        $depotItemOp = $this->repository->getList();
         return $this->response->paginator($depotItemOp, new DepotItemOperationsTransformer());
     }
 
     public function store(StoreRequest $request) {
         $fields = $request->all();
-        $res = $this->depotItemOperations->store($fields);
+        $res = $this->repository->store($fields);
         return $this->response->item($res, new DepotItemOperationsTransformer());
     }
 
@@ -36,7 +36,7 @@ class DepotItemOperationsController extends BaseController
 
     public function update($id, UpdateRequest $request) {
         $fields = $request->all();
-        $res = $this->depotItemOperations->update($id, $fields);
+        $res = $this->repository->update($id, $fields);
         if ($res)
             return $this->response->item($res, new DepotItemOperationsTransformer());
         $this->response->errorNotFound('Record not found');

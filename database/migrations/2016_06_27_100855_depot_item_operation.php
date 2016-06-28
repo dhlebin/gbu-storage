@@ -18,6 +18,8 @@ class DepotItemOperation extends Migration
             $table->integer('depot_id')->index();
             $table->integer('depot_item_id')->index()->nullable();
             $table->enum('status', ['in_progress', 'completed', 'rejected'])->default('in_progress');
+            $table->enum('type', ['change', 'move', 'correct']);
+            $table->integer('opposite_operation_id')->index()->nullable();
             $table->timestamps();
             $table->timestamp('date_closed')->nullable();
         });

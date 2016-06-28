@@ -18,7 +18,6 @@ class DepotItemOperation extends Model
         'depot_item_id',
         'status',
         'type',
-        'delta',
         'opposite_operation_id'
     ];
 
