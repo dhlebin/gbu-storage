@@ -16,8 +16,9 @@ class StoreItemAttributeRequest extends FormRequest
         return [
             'name'  => 'required|max:255',
             'alias' => 'required|max:255',
-            'type'  => 'required'
-        ];
+            'type'  => 'required',
+			'unit_id' => 'exists:units,id'
+		];
     }
 
 }

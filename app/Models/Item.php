@@ -18,6 +18,11 @@ class Item extends Model
         return $this->belongsTo(ItemGroup::class);
     }
 
+	public function unit()
+	{
+		return $this->belongsTo('App\Models\Unit');
+	}
+
     public function attributes()
     {
         return $this->hasMany(ItemAttributesValue::class)->with('attribute');

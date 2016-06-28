@@ -14,8 +14,19 @@ class ItemAttribute extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name', 'alias', 'type', 'group_id'];
+    protected $fillable = [
+		'name',
+		'alias',
+		'type',
+	//	'group_id',
+		'unit_id'
+	];
 
     protected $dates = ['deleted_at'];
+
+	public function unit()
+	{
+		return $this->belongsTo('App\Models\Unit');
+	}
 
 }

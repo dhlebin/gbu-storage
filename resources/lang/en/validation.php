@@ -94,8 +94,12 @@ return [
 
     'custom' => [
         'unit' => [
-            'related_with_item' => 'This Unit related with Item'
+            'related_with_item' => 'This Unit has related Item.',
+			'related_with_item_attributes' => 'This Unit has related Item Attributes.'
         ],
+		'item' => [
+			'not_found' => 'Item not found'
+		]
     ],
 
     /*

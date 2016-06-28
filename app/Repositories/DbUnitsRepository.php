@@ -11,7 +11,9 @@ namespace App\Repositories;
 use App\Contracts\Repositories\UnitsRepository;
 use App\Models\Item;
 use App\Models\Unit;
+use App\Models\User;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class DbUnitsRepository extends BaseDbRepository implements  UnitsRepository
 {
@@ -22,9 +24,17 @@ class DbUnitsRepository extends BaseDbRepository implements  UnitsRepository
 
 	public function remove($id)
 	{
-		$itemsCount = $this->model->find($id)->hasMany(Item::class)->count();
-		if ($itemsCount == 0) return $this->model->destroy($id);
+		$unit = $this->model->find($id);
+		
+		if (!$unit) 
+			throw new NotFoundHttpException(trans('validation.custom.item.not_found'));
 
-		throw new ConflictHttpException(trans('validation.custom.unit.related_with_item'));
+		if ($unit->items()->count()) 
+			throw new ConflictHttpException(trans('validation.custom.unit.related_with_item'));
+
+		if ($unit->item_attributes()->count())
+			throw new ConflictHttpException(trans('validation.custom.unit.related_with_item_attributes'));
+
+		return $this->model->destroy($id);
 	}
 }

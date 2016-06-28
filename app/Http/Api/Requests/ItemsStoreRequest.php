@@ -2,7 +2,9 @@
 
 namespace App\Http\Api\Requests;
 
-class ItemsStoreRequest extends Request
+use Dingo\Api\Http\FormRequest;
+
+class ItemsStoreRequest extends FormRequest
 {
     public function authorize()
     {
@@ -14,9 +16,9 @@ class ItemsStoreRequest extends Request
         return [
             'name' => 'required|max:255',
             'alias' => 'required|max:255',
-            'group_id' => 'required|numeric',
+            'group_id' => 'required|numeric|exists:item_groups,id',
             'is_available' => 'boolean',
-			'unit_id' => 'required|numeric'
+			'unit_id' => 'required|numeric|exists:units,id'
         ];
     }
 }
