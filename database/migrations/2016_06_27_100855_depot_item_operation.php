@@ -21,7 +21,7 @@ class DepotItemOperation extends Migration
             $table->enum('type', ['change', 'move', 'correct']);
             $table->integer('opposite_operation_id')->index()->nullable();
             $table->timestamps();
-            $table->timestamp('date_closed')->nullable();
+            $table->dateTime('date_closed')->nullable();
         });
     }
 

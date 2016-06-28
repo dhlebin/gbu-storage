@@ -22,6 +22,7 @@ class DepotItemOperationSeeder extends Seeder {
             'depot_id' => 2,
             'depot_item_id' => 1,
             'status' => 'in_progress',
+            'type' => 'change',
             'opposite_operation_id' => 2
         ]);
 
@@ -30,6 +31,7 @@ class DepotItemOperationSeeder extends Seeder {
             'depot_id' => 4,
             'depot_item_id' => 7,
             'status' => 'completed',
+            'type' => 'move',
             'opposite_operation_id' => 2
         ]);
 
@@ -37,8 +39,8 @@ class DepotItemOperationSeeder extends Seeder {
             'item_id' => 3,
             'depot_id' => 1,
             'depot_item_id' => 5,
-            'status' => 'rejected',
-            'opposite_operation_id' => 2
+            'type' => 'change',
+            'status' => 'rejected'
         ]);
     }
 }
