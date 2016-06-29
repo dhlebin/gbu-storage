@@ -27,9 +27,9 @@ class StoreRequest extends FormRequest
     {
         return [
             'depot_item_operation_id' => 'required|numeric',
-			'operation' => 'in:basic,correction,loss',
-			'status' => 'in:hold,accepted,declined',
-			'delta' => 'required|numeric',
+            'operation' => 'in:basic,correction,loss',
+            'status' => 'in:hold,accepted,declined',
+            'delta' => 'required|numeric',
             'date' => 'required|date',
         ];
     }

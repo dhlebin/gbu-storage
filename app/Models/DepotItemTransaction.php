@@ -16,7 +16,7 @@ class DepotItemTransaction extends Model
      * 
      * @var array
      */
-	protected $fillable = [
+    protected $fillable = [
         'depot_item_operation_id', 
         'operation', 
         'status', 
@@ -24,5 +24,5 @@ class DepotItemTransaction extends Model
         'date',
     ];
     
-	public $timestamps = false;
+    public $timestamps = false;
 }

@@ -9,14 +9,14 @@ use App\Transformers\DepotItemTransactionTransformer;
 
 class DepotItemTransactionsController extends BaseController
 {
-	protected $depotItemTransactions;
+    protected $depotItemTransahctions;
 
-	public function __construct(DepotItemTransaction $dit)
-	{
-		$this->depotItemTransactions = $dit;
-	}
+    public function __construct(DepotItemTransaction $dit)
+    {
+        $this->depotItemTransactions = $dit;
+    }
 
-	/**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -24,7 +24,7 @@ class DepotItemTransactionsController extends BaseController
     public function index()
     {
         $depotIT = $this->depotItemTransactions->getList();
-		return $this->response->paginator($depotIT, new DepotItemTransactionTransformer());
+        return $this->response->paginator($depotIT, new DepotItemTransactionTransformer());
     }
 
     /**
@@ -36,8 +36,8 @@ class DepotItemTransactionsController extends BaseController
     public function store(StoreRequest $request)
     {
         $fields = $request->all();
-		$res = $this->depotItemTransactions->store($fields);
-		return $this->response->item($res, new DepotItemTransactionTransformer())->setStatusCode(201);
+        $res = $this->depotItemTransactions->store($fields);
+        return $this->response->item($res, new DepotItemTransactionTransformer())->setStatusCode(201);
     }
 
     /**
@@ -49,9 +49,9 @@ class DepotItemTransactionsController extends BaseController
     public function show($id)
     {
         $res = $this->depotItemTransactions->getById($id);
-		if ($res) return $this->response->item($res, new DepotItemTransactionTransformer());
+        if ($res) return $this->response->item($res, new DepotItemTransactionTransformer());
 
-		$this->response->errorNotFound();
+        $this->response->errorNotFound();
     }
 
     /**
@@ -75,10 +75,10 @@ class DepotItemTransactionsController extends BaseController
     public function update($id, UpdateRequest $request)
     {
         $fields = $request->all();
-		$res = $this->depotItemTransactions->update($id, $fields);
-		if ($res) return $this->response->item($res, new DepotItemTransactionTransformer());
+        $res = $this->depotItemTransactions->update($id, $fields);
+        if ($res) return $this->response->item($res, new DepotItemTransactionTransformer());
 
-		$this->response->errorNotFound('Unit not found');
+        $this->response->errorNotFound('Unit not found');
     }
 
     /**
@@ -90,9 +90,9 @@ class DepotItemTransactionsController extends BaseController
     public function destroy($id)
     {
         $res = $this->depotItemTransactions->remove($id);
-		if ($res)
-			return $this->response->noContent();
+        if ($res)
+            return $this->response->noContent();
 
-		$this->response->errorBadRequest();
+        $this->response->errorBadRequest();
     }
 }
