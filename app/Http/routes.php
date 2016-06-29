@@ -27,13 +27,7 @@ $api->version('v1', function (Dingo\Api\Routing\Router $api) {
             );
             $api->resource('depots', 'DepotsController');
             $api->resource('depot_items', 'DepotItemsController');
-            $api->resource(
-                'depot_item_operations',
-                'DepotItemOperationsController',
-                [
-                    'except' => ['destroy']
-                ]
-            );
+            $api->resource('depot_organization_roles', 'DepotOrganizationRolesController');
             $api->resource('depot_item_transactions', 'DepotItemTransactionsController');
         }
     );

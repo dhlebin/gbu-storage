@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DepotItemsSeeder::class);
         $this->call(DepotItemOperationSeeder::class);
         $this->call(DepotItemTransactionsSeeder::class);
+        $this->call(DepotOrganizationRolesSeeder::class);
     }
 }

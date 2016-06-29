@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Contracts\Repositories\DepotOrganizationRolesRepository;
 use App\Contracts\Repositories\DepotItemOperationsRepository;
 use App\Contracts\Repositories\DepotItemsRepository;
 use App\Contracts\Repositories\DepotItemTransactionsRepository;
@@ -12,6 +13,7 @@ use App\Contracts\Repositories\ItemsRepository;
 use App\Contracts\Repositories\UnitsRepository;
 use App\Repositories\DbDepotItemOperationsRepository;
 use App\Repositories\DbDepotItemsRepository;
+use App\Repositories\DbDepotOrganizationRolesRepository;
 use App\Repositories\DbDepotItemTransactionRepository;
 use App\Repositories\DbDepotsRepository;
 use App\Repositories\DbItemAttributesRepository;
@@ -79,6 +81,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             DepotItemOperationsRepository::class,
             DbDepotItemOperationsRepository::class
+        );
+        $this->app->bind(
+            DepotOrganizationRolesRepository::class,
+            DbDepotOrganizationRolesRepository::class
         );
     }
 }
