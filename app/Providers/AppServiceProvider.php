@@ -5,10 +5,12 @@ namespace App\Providers;
 use App\Contracts\Repositories\DepotItemsRepository;
 use App\Contracts\Repositories\DepotsRepository;
 use App\Contracts\Repositories\ItemAttributesRepository;
+use App\Contracts\Repositories\DepotItemOperationsRepository;
 use App\Repositories\DbDepotItemsRepository;
 use App\Repositories\DbDepotsRepository;
-use App\Contracts\Repositories\DepotItemOperationsRepository;
 use App\Repositories\DbItemAttributesRepository;
+use App\Services\ExtendedValidator;
+use Illuminate\Support\Facades\Validator;
 use App\Repositories\DbDepotItemOperationsRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\Repositories\UnitsRepository;
@@ -23,7 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Validator::resolver(function($translator, $data, $rules, $messages) {
+            return new ExtendedValidator($translator, $data, $rules, $messages);
+        });
     }
 
     /**
@@ -48,6 +52,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             'App\Contracts\Repositories\ItemGroupsRepository',
             'App\Repositories\DbItemGroupsRepository'
+        );
+        $this->app->bind(
+            DepotItemOperationsRepository::class,
+            DbDepotItemOperationsRepository::class
         );
         $this->app->bind(
             DepotsRepository::class,

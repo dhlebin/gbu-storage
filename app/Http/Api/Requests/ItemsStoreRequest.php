@@ -14,10 +14,12 @@ class ItemsStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'alias' => 'required|max:255',
-            'group_id' => 'required|numeric',
-            'is_available' => 'boolean'
+            'name'               => 'required|max:255',
+            'alias'              => 'required|max:255|unique:items',
+            'group_id'           => 'required|numeric|exists:item_groups,id',
+            'is_available'       => 'boolean',
+            'attributes.*.id'    => 'required|numeric|exists:item_attributes,id',
+            'attributes.*.value' => 'required|attributeValue'
         ];
     }
 }
