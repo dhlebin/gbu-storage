@@ -19,7 +19,8 @@ class ItemsStoreRequest extends FormRequest
             'group_id'           => 'required|numeric|exists:item_groups,id',
             'is_available'       => 'boolean',
             'attributes.*.id'    => 'required|numeric|exists:item_attributes,id',
-            'attributes.*.value' => 'required|attributeValue'
+            'attributes.*.value' => 'required|attributeValue',
+            'unit_id' => 'numeric|exists:units,id'
         ];
     }
 }

@@ -11,6 +11,16 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Unit extends Model
 {
-	protected $fillable = ['name', 'designation', 'decimal_symbol_count', 'min_value'];
-	public $timestamps = false;
+    protected $fillable = ['name', 'designation', 'decimal_symbol_count', 'min_value'];
+    public $timestamps = false;
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
+
+    public function item_attributes()
+    {
+        return $this->hasMany(ItemAttribute::class);
+    }
 }

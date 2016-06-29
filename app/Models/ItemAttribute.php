@@ -14,14 +14,18 @@ class ItemAttribute extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name', 'alias', 'type', 'group_id'];
+    /**
+     * @todo add field group_id
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'alias',
+        'type',
+        'unit_id'
+    ];
 
     protected $dates = ['deleted_at'];
-
-    public function values()
-    {
-        return $this->hasMany(ItemAttributesValue::class);
-    }
 
     protected static function boot()
     {
@@ -30,4 +34,10 @@ class ItemAttribute extends Model
             $model->values()->delete();
         });
     }
+    
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class);
+    }
+
 }

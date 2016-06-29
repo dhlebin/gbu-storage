@@ -16,8 +16,9 @@ class ItemsUpdateRequest extends FormRequest
         return [
             'name' => 'max:255',
             'alias' => 'max:255',
-            'group_id' => 'numeric',
-            'is_available' => 'boolean'
+            'group_id' => 'numeric|exists:item_groups,id',
+            'is_available' => 'boolean',
+            'unit_id' => 'numeric|exists:units,id'
         ];
     }
 }
