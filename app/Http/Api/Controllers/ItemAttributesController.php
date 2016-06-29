@@ -8,7 +8,7 @@ use App\Transformers\ItemAttributeTransformer;
 
 class ItemAttributesController extends BaseController
 {
-    /** @var DbItemAttributesRepository itemAttributes */
+    /** @var DbItemAttributesRepository $itemAttributes */
     protected $itemAttributes;
 
     public function __construct(ItemAttributes $itemAttributes)

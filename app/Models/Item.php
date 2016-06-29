@@ -33,11 +33,11 @@ class Item extends Model
 
     public function saveAttributes($attributes)
     {
-        foreach ($attributes as $id => $value) {
+        foreach ($attributes as $value) {
             $model = ItemAttributesValue::where('item_id', $this->id)
-                ->where('attribute_id', $id)
+                ->where('attribute_id', $value['id'])
                 ->first() ?: new ItemAttributesValue;
-            $model->fill(['attribute_id' => $id, 'value' => $value]);
+            $model->fill(['attribute_id' => $value['id'], 'value' => $value['value']]);
             $this->attributes()->save($model);
         }
     }
