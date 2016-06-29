@@ -1,8 +1,8 @@
 <?php namespace App\Http\Api\Controllers;
 
+use App\Contracts\Repositories\ItemAttributesRepository as ItemAttributes;
 use App\Http\Api\Requests\StoreItemAttributeRequest;
 use App\Http\Api\Requests\UpdateItemAttributeRequest;
-use App\Contracts\Repositories\ItemAttributesRepository as ItemAttributes;
 use App\Repositories\DbItemAttributesRepository;
 use App\Transformers\ItemAttributeTransformer;
 
