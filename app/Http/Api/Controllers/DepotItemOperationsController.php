@@ -2,10 +2,10 @@
 
 namespace App\Http\Api\Controllers;
 
+use App\Contracts\Repositories\DepotItemOperationsRepository as DepotItemOperations;
 use App\Http\Api\Requests\DepotItemOperation\StoreRequest;
 use App\Http\Api\Requests\DepotItemOperation\UpdateRequest;
 use App\Transformers\DepotItemOperationsTransformer;
-use App\Contracts\Repositories\DepotItemOperationsRepository as DepotItemOperations;
 
 class DepotItemOperationsController extends BaseController
 {

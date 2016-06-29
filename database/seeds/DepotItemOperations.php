@@ -6,8 +6,8 @@
  * Time: 12:08
  */
 
-use Illuminate\Database\Seeder;
 use App\Models\DepotItemOperation;
+use Illuminate\Database\Seeder;
 
 class DepotItemOperationSeeder extends Seeder {
 

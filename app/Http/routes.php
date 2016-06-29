@@ -34,6 +34,7 @@ $api->version('v1', function (Dingo\Api\Routing\Router $api) {
                     'except' => ['destroy']
                 ]
             );
+            $api->resource('depot_item_transactions', 'DepotItemTransactionsController');
         }
     );
 });
