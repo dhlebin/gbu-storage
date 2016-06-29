@@ -13,7 +13,7 @@ class ItemsToUnits extends Migration
     public function up()
     {
         Schema::table('items', function (Blueprint $table) {
-			$table->integer('unit_id');
+            $table->integer('unit_id');
         });
     }
 
@@ -25,7 +25,7 @@ class ItemsToUnits extends Migration
     public function down()
     {
         Schema::table('items', function (Blueprint $table) {
-        	$table->dropColumn('unit_id');
+            $table->dropColumn('unit_id');
         });
     }
 }

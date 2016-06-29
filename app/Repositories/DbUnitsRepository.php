@@ -20,19 +20,19 @@ class DbUnitsRepository extends BaseDbRepository implements  UnitsRepository
         return Unit::class;
     }
 
-	public function remove($id)
-	{
-		$unit = $this->model->find($id);
-		
-		if (!$unit) 
-			throw new NotFoundHttpException(trans('validation.custom.unit.not_found'));
+    public function remove($id)
+    {
+        $unit = $this->model->find($id);
+        
+        if (!$unit) 
+            throw new NotFoundHttpException(trans('validation.custom.unit.not_found'));
 
-		if ($unit->items()->count()) 
-			throw new ConflictHttpException(trans('validation.custom.unit.related_with_item'));
+        if ($unit->items()->count()) 
+            throw new ConflictHttpException(trans('validation.custom.unit.related_with_item'));
 
-		if ($unit->item_attributes()->count())
-			throw new ConflictHttpException(trans('validation.custom.unit.related_with_item_attributes'));
+        if ($unit->item_attributes()->count())
+            throw new ConflictHttpException(trans('validation.custom.unit.related_with_item_attributes'));
 
-		return $this->model->destroy($id);
-	}
+        return $this->model->destroy($id);
+    }
 }

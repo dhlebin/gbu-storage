@@ -18,7 +18,7 @@ class ItemsUpdateRequest extends FormRequest
             'alias' => 'max:255',
             'group_id' => 'numeric|exists:item_groups,id',
             'is_available' => 'boolean',
-			'unit_id' => 'numeric|exists:units,id'
+            'unit_id' => 'numeric|exists:units,id'
         ];
     }
 }

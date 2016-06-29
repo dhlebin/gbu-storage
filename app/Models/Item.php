@@ -18,10 +18,10 @@ class Item extends Model
         return $this->belongsTo(ItemGroup::class);
     }
 
-	public function unit()
-	{
-		return $this->belongsTo(Unit::class);
-	}
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class);
+    }
 
     public function attributes()
     {

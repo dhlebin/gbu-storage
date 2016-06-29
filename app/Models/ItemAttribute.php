@@ -19,11 +19,11 @@ class ItemAttribute extends Model
      * @var array
      */
     protected $fillable = [
-		'name',
-		'alias',
-		'type',
-		'unit_id'
-	];
+        'name',
+        'alias',
+        'type',
+        'unit_id'
+    ];
 
     protected $dates = ['deleted_at'];
 
@@ -35,9 +35,9 @@ class ItemAttribute extends Model
         });
     }
     
-	public function unit()
-	{
-		return $this->belongsTo(Unit::class);
-	}
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class);
+    }
 
 }

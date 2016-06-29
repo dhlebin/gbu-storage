@@ -12,9 +12,9 @@ class ItemsAttributesToUnits extends Migration
      */
     public function up()
     {
-		Schema::table('item_attributes', function (Blueprint $table) {
-			$table->integer('unit_id')->nullable();
-		});
+        Schema::table('item_attributes', function (Blueprint $table) {
+            $table->integer('unit_id')->nullable();
+        });
     }
 
     /**
