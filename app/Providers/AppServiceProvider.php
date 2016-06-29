@@ -2,19 +2,19 @@
 
 namespace App\Providers;
 
-use App\Contracts\Repositories\DepotItemsRepository;
-use App\Contracts\Repositories\DepotsRepository;
-use App\Contracts\Repositories\DepotItemTransactionsRepository;
-use App\Contracts\Repositories\ItemAttributesRepository;
 use App\Contracts\Repositories\DepotItemOperationsRepository;
+use App\Contracts\Repositories\DepotItemsRepository;
+use App\Contracts\Repositories\DepotItemTransactionsRepository;
+use App\Contracts\Repositories\DepotsRepository;
+use App\Contracts\Repositories\ItemAttributesRepository;
+use App\Contracts\Repositories\ItemGroupsRepository;
 use App\Contracts\Repositories\ItemsRepository;
 use App\Contracts\Repositories\UnitsRepository;
-use App\Contracts\Repositories\ItemGroupsRepository;
+use App\Repositories\DbDepotItemOperationsRepository;
 use App\Repositories\DbDepotItemsRepository;
+use App\Repositories\DbDepotItemTransactionRepository;
 use App\Repositories\DbDepotsRepository;
 use App\Repositories\DbItemAttributesRepository;
-use App\Repositories\DbDepotItemOperationsRepository;
-use App\Repositories\DbDepotItemTransactionRepository;
 use App\Repositories\DbItemGroupsRepository;
 use App\Repositories\DbItemsRepository;
 use App\Repositories\DbUnitsRepository;
