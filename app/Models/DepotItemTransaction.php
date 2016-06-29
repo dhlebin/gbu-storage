@@ -25,4 +25,9 @@ class DepotItemTransaction extends Model
     ];
     
     public $timestamps = false;
+    
+    public function depotItemOperation()
+    {
+        return $this->belongsTo(DepotItemOperation::class);
+    }
 }

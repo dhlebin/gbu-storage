@@ -26,7 +26,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'depot_item_operation_id' => 'required|numeric',
+            'depot_item_operation_id' => 'required|numeric|exists:depot_item_transactions,id',
             'operation' => 'in:basic,correction,loss',
             'status' => 'in:hold,accepted,declined',
             'delta' => 'required|numeric',
