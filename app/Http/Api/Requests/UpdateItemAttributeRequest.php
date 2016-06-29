@@ -24,7 +24,8 @@ class UpdateItemAttributeRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'max:255'
+            'name' => 'max:255',
+            'type' => 'in:integer, float, string, text, boolean, datetime'
         ];
     }
 }

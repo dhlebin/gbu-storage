@@ -1,20 +1,19 @@
 <?php namespace App\Http\Api\Controllers;
 
-use App\Api\Requests\StoreItemAttributeRequest;
-use App\Api\Requests\UpdateItemAttributeRequest;
-use App\Contracts\Repositories\ItemAttributesRepository as ItemGroupAttribute;
+use App\Http\Api\Requests\StoreItemAttributeRequest;
+use App\Http\Api\Requests\UpdateItemAttributeRequest;
+use App\Contracts\Repositories\ItemAttributesRepository as ItemAttributes;
 use App\Repositories\DbItemAttributesRepository;
 use App\Transformers\ItemAttributeTransformer;
 
 class ItemAttributesController extends BaseController
 {
-    /** @var DbItemAttributesRepository itemGroupAttribute */
+    /** @var DbItemAttributesRepository $itemAttributes */
     protected $itemAttributes;
 
-    public function __construct(ItemGroupAttribute $itemGroupAttribute)
+    public function __construct(ItemAttributes $itemAttributes)
     {
-
-        $this->itemAttributes = $itemGroupAttribute;
+        $this->itemAttributes = $itemAttributes;
     }
 
     public function index()

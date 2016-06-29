@@ -2,7 +2,9 @@
 
 namespace App\Http\Api\Requests;
 
-class StoreItemGroupRequest extends Request
+use Dingo\Api\Http\FormRequest;
+
+class StoreItemGroupRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

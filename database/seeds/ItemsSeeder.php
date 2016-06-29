@@ -12,6 +12,7 @@ class ItemsSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('items')->truncate();
         Item::create([
             'alias' => 'gravel',
             'name' => 'Гравий',
