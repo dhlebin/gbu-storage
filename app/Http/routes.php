@@ -16,6 +16,7 @@ $api->version('v1', function (Dingo\Api\Routing\Router $api) {
             $api->get('itemgroups/{id}/ancestors', 'ItemGroupsController@ancestors');
             $api->resource('itemgroups', 'ItemGroupsController');
             $api->resource('units', 'UnitsController');
+            $api->resource('depot_item_transactions', 'DepotItemTransactionsController');
         }
     );
 });
