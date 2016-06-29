@@ -27,6 +27,14 @@ class ItemAttribute extends Model
 
     protected $dates = ['deleted_at'];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($model) {
+            $model->values()->delete();
+        });
+    }
+    
 	public function unit()
 	{
 		return $this->belongsTo(Unit::class);

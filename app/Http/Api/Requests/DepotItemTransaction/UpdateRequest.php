@@ -1,10 +1,11 @@
-<?php
+<?
 
-namespace App\Http\Api\Requests;
+namespace App\Http\Api\Requests\DepotItemTransaction;
 
 use Dingo\Api\Http\FormRequest;
 
-class UpdateItemAttributeRequest extends FormRequest
+
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -18,15 +19,18 @@ class UpdateItemAttributeRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
+     * @todo add user_id
      *
      * @return array
      */
     public function rules()
     {
         return [
-            'name' => 'max:255',
-            'type' => 'in:integer, float, string, text, boolean, datetime',
-            'unit_id' => 'exists:units,id'
+            'depot_item_operation_id' => 'numeric',
+            'operation' => 'in:basic,correction,loss',
+            'status' => 'in:hold,accepted,declined',
+            'delta' => 'numeric',
+            'date' => 'date',
         ];
     }
 }

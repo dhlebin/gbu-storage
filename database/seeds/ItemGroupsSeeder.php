@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Models\ItemGroup;
+use Illuminate\Database\Seeder;
 
 class ItemGroupsSeeder extends Seeder
 {
@@ -12,6 +12,7 @@ class ItemGroupsSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('item_groups')->truncate();
         ItemGroup::create([
             'alias' => 'nerudka',
             'name' => 'Нерудные материалы',

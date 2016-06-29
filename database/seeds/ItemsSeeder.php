@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Models\Item;
+use Illuminate\Database\Seeder;
 
 class ItemsSeeder extends Seeder
 {
@@ -12,6 +12,7 @@ class ItemsSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('items')->truncate();
         Item::create([
             'alias' => 'gravel',
             'name' => 'Гравий',

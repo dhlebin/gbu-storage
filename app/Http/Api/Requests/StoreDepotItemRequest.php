@@ -4,7 +4,7 @@ namespace App\Http\Api\Requests;
 
 use Dingo\Api\Http\FormRequest;
 
-class UpdateItemGroupRequest extends FormRequest
+class StoreDepotItemRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UpdateItemGroupRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class UpdateItemGroupRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'depot_id' => 'required|exists:depots,id',
+            'item_id'  => 'required|exists:items,id',
+            'amount'   => 'required|numeric',
         ];
     }
 }
