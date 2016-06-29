@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class ItemsAttributesToUnits extends Migration
 {
@@ -24,6 +24,8 @@ class ItemsAttributesToUnits extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('item_attributes', function (Blueprint $table) {
+            $table->dropColumn('unit_id');
+        });
     }
 }

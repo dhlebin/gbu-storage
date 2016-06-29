@@ -14,11 +14,14 @@ class ItemAttribute extends Model
 {
     use SoftDeletes;
 
+    /**
+     * @todo add field group_id
+     * @var array
+     */
     protected $fillable = [
 		'name',
 		'alias',
 		'type',
-	//	'group_id',
 		'unit_id'
 	];
 
