@@ -24,10 +24,11 @@ class StoreItemGroupRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'         => 'required|max:255',
-            'alias'        => 'required|unique:item_groups|max:255',
-            'is_available' => 'required|boolean',
-            'parent_id'    => 'numeric|exists:item_groups,id'
+            'name'            => 'required|max:255',
+            'alias'           => 'required|unique:item_groups|max:255',
+            'is_available'    => 'required|boolean',
+            'parent_id'       => 'numeric|exists:item_groups,id',
+            'item_attributes' => 'array|exists:item_attributes,id'
         ];
     }
 }

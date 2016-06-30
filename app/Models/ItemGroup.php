@@ -19,7 +19,7 @@ class ItemGroup extends Model
 {
     use NodeTrait;
 
-    protected $fillable = ['alias', 'name', 'description', 'is_available', 'parent_id', 'item_attributes'];
+    protected $fillable = ['alias', 'name', 'description', 'is_available', 'parent_id'];
 
     public $timestamps = false;
 
@@ -30,15 +30,6 @@ class ItemGroup extends Model
 
     public function itemAttributes()
     {
-        return $this->belongsToMany(ItemAttribute::class, 'items_groups_attributes');
-    }
-
-    public static function boot()
-    {
-        static::saving(function($model) {
-            if($model->item_attributes) {
-                $model->itemAttributes()->sync($model->item_attributes);
-            }
-        });
+        return $this->belongsToMany(ItemAttribute::class, 'items_groups_attributes', 'item_group_id', 'item_attribute_id');
     }
 }
