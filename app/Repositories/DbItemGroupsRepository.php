@@ -31,4 +31,27 @@ class DbItemGroupsRepository extends BaseDbRepository implements ItemGroupsRepos
     {
         return ItemGroup::class;
     }
+
+    public function store($fields)
+    {
+        if(($model = parent::store($fields)) && isset($fields['item_attributes'])) {
+            $model->saveAttributes($fields['item_attributes']);
+        }
+
+        return $model;
+    }
+
+    public function update($id, $fields)
+    {
+        if(($model = parent::update($id, $fields)) && isset($fields['item_attributes'])) {
+            $model->saveAttributes($fields['item_attributes']);
+        }
+
+        return $model;
+    }
+
+    public function getById($id, $columns = ['*'])
+    {
+        return $this->model->with('itemAttributes')->find($id, $columns);
+    }
 }

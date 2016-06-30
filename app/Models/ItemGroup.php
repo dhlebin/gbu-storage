@@ -27,4 +27,14 @@ class ItemGroup extends Model
     {
         return $this->hasMany(Item::class);
     }
+
+    public function itemAttributes()
+    {
+        return $this->belongsToMany(ItemAttribute::class, 'items_groups_attributes', 'item_group_id', 'item_attribute_id');
+    }
+
+    public function saveAttributes($attributes)
+    {
+        $this->itemAttributes()->sync($attributes);
+    }
 }
