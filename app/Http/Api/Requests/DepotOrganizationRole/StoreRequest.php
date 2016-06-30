@@ -25,7 +25,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'depot_id'        => 'required|numeric|exists:depots,id',
-            'organization_id' => 'required|numeric|exists:depots,id',
+            'organization_id' => 'required|numeric',
             'user_role_id'    => 'numeric',
             'role'            => 'required|max:255'
         ];
