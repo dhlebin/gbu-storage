@@ -25,7 +25,7 @@ class UpdateItemAttributeRequest extends FormRequest
     {
         return [
             'name' => 'max:255',
-            'type' => 'in:integer, float, string, text, boolean, datetime',
+            'type' => 'in:integer,float,string,text,boolean,datetime',
             'unit_id' => 'exists:units,id'
         ];
     }
