@@ -9,7 +9,7 @@
 use App\Models\DepotItemOperation;
 use Illuminate\Database\Seeder;
 
-class DepotItemOperationSeeder extends Seeder {
+class DepotItemOperationsSeeder extends Seeder {
 
     /**
      * Run the database seeds.

@@ -20,5 +20,9 @@ class DepotItemOperation extends Model
         'type',
         'opposite_operation_id'
     ];
-
+    
+    public function depotItemTransactions() 
+    {
+        return $this->hasMany(DepotItemTransaction::class);
+    }
 }

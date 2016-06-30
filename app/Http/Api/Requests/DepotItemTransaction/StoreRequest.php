@@ -18,7 +18,6 @@ class StoreRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     * @todo depot_item_operation exists
      * @todo add user_id 
      *
      * @return array
@@ -26,7 +25,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'depot_item_operation_id' => 'required|numeric',
+            'depot_item_operation_id' => 'required|numeric|exists:depot_item_operations,id',
             'operation' => 'in:basic,correction,loss',
             'status' => 'in:hold,accepted,declined',
             'delta' => 'required|numeric',
