@@ -26,7 +26,7 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'depot_item_operation_id' => 'numeric|exists:depot_item_transactions,id',
+            'depot_item_operation_id' => 'numeric|exists:depot_item_operations,id',
             'operation' => 'in:basic,correction,loss',
             'status' => 'in:hold,accepted,declined',
             'delta' => 'numeric',
