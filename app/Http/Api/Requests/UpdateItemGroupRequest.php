@@ -13,7 +13,7 @@ class UpdateItemGroupRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class UpdateItemGroupRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'         => 'max:255',
+            'alias'        => 'unique:item_groups|max:255',
+            'is_available' => 'boolean',
+            'parent_id'    => 'numeric|exists:item_groups,id'
         ];
     }
 }

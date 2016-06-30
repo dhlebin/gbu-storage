@@ -13,7 +13,7 @@ class StoreItemGroupRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreItemGroupRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'         => 'required|max:255',
+            'alias'        => 'required|unique:item_groups|max:255',
+            'is_available' => 'required|boolean',
+            'parent_id'    => 'numeric|exists:item_groups,id'
         ];
     }
 }
