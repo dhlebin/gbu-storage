@@ -4,7 +4,7 @@ class DepotItemOperationTest extends TestCase
 {
     private $testId;
     private $url = '/api/v1/depot_item_operations/';
-    private $realItemId = 6;
+    private $realItemId = 1;
     private $realDepotId = 1;
     private $realDepotItemId = 1;
     private $realStatus = 'rejected';
@@ -58,6 +58,6 @@ class DepotItemOperationTest extends TestCase
      */
     public function testPut($testId)
     {
-        $this->put($this->url . $testId, ['opposite_operation_id' => 123])->seeJsonContains(['opposite_operation_id' => 123]);
+        $this->put($this->url . $testId, ['status' => $this->realStatus])->seeJsonContains(['status' => $this->realStatus]);
     }
 }

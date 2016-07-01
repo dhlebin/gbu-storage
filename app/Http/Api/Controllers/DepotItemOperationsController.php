@@ -24,7 +24,7 @@ class DepotItemOperationsController extends BaseController
     public function store(StoreRequest $request) {
         $fields = $request->all();
         $res = $this->repository->store($fields);
-        return $this->response->item($res, new DepotItemOperationsTransformer());
+        return $this->response->item($res, new DepotItemOperationsTransformer())->setStatusCode(201);
     }
 
     public function show($id) {
