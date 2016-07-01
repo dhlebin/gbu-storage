@@ -1,0 +1,96 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Storage API",
+        "description": "This is documentation for API",
+        "contact": {
+            "email": "apiteam@wordnik.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "host": "localhost:8081",
+    "basePath": "/api/v1",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/items": {
+            "get": {
+                "tags": [
+                    "Item"
+                ],
+                "summary": "Return all items with pagination",
+                "description": "This is method for find all items",
+                "operationId": "findAllItems",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "ID of item",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "title": "data",
+                            "type": "object",
+                            "$ref": "#/definitions/Item"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Item": {
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "alias": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "group_id": {
+                                "type": "integer"
+                            },
+                            "is_available": {
+                                "type": "integer"
+                            },
+                            "created_at": {
+                                "type": "dateTime"
+                            },
+                            "updated_at": {
+                                "type": "dateTime"
+                            },
+                            "unit_id": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    }
+}

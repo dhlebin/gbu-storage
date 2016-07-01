@@ -15,6 +15,32 @@ class ItemsController extends BaseController
         $this->itemsRepo = $itemsRepo;
     }
 
+    /**
+     * @SWG\Get(
+     *     path="/items",
+     *     summary="Return all items with pagination",
+     *     tags={"Item"},
+     *     description="This is method for find all items",
+     *     operationId="findAllItems",
+     *     @SWG\Parameter(
+     *          description="ID of item",
+     *          name="page",
+     *          in="query",
+     *          required=false,
+     *          type="integer"
+     *     ),
+     *     @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *             title="data",
+     *             type="object",
+     *             ref="#/definitions/Item"
+     *          )
+     *     )
+     * )
+     */
+
     public function index()
     {
         $items = $this->itemsRepo->getList();
