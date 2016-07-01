@@ -18,11 +18,11 @@ class UpdateRequest extends FormRequest {
 
     public function rules() {
         return [
-            'item_id' => 'required|exists:items,id',
-            'depot_item_id' => 'required|exists:depot_items,id',
-            'depot_id' => 'required|exists:depots,id',
-            'status' => 'required|in:in_progress,completed,rejected',
-            'type' => 'required|in:change,move,correct',
+            'item_id' => 'exists:items,id',
+            'depot_item_id' => 'exists:depot_items,id',
+            'depot_id' => 'exists:depots,id',
+            'status' => 'in:in_progress,completed,rejected',
+            'type' => 'in:change,move,correct',
             'opposite_operation_id' => 'integer'
         ];
     }
