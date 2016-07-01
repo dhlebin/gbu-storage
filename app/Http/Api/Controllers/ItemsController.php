@@ -31,7 +31,10 @@ class ItemsController extends BaseController
     public function show($id)
     {
         $item = $this->itemsRepo->getById($id);
-        return $this->response->item($item, new ItemsTransformer);
+        if ($item) {
+            return $this->response->item($item, new ItemsTransformer);
+        }
+        $this->response->errorNotFound();
     }
 
     public function update($id, ItemsUpdateRequest $request)
