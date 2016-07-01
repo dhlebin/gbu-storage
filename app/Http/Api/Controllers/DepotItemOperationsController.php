@@ -16,6 +16,32 @@ class DepotItemOperationsController extends BaseController
         $this->repository = $depot;
     }
 
+    /**
+     * @SWG\Get(
+     *     path="/depot_item_operations/",
+     *     summary="Return all depot item operations with pagination",
+     *     tags={"Depot item operation"},
+     *     description="This is method for find all depot item operations",
+     *     operationId="findAllDepotItems",
+     *     @SWG\Parameter(
+     *          description="Number of page",
+     *          name="page",
+     *          in="query",
+     *          required=false,
+     *          type="integer"
+     *     ),
+     *     @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *             title="data",
+     *             type="object",
+     *             ref="#/definitions/DepotItemOperation"
+     *          )
+     *     )
+     * )
+     */
+
     public function index() {
         $depotItemOp = $this->repository->getList();
         return $this->response->paginator($depotItemOp, new DepotItemOperationsTransformer());

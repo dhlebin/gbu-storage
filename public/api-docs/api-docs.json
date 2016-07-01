@@ -18,6 +18,196 @@
         "http"
     ],
     "paths": {
+        "/depot_item_operations/": {
+            "get": {
+                "tags": [
+                    "Depot item operation"
+                ],
+                "summary": "Return all depot item operations with pagination",
+                "description": "This is method for find all depot item operations",
+                "operationId": "findAllDepotItems",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Number of page",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "title": "data",
+                            "type": "object",
+                            "$ref": "#/definitions/DepotItemOperation"
+                        }
+                    }
+                }
+            }
+        },
+        "/depots/": {
+            "get": {
+                "tags": [
+                    "Depot"
+                ],
+                "summary": "Return all depots with pagination",
+                "description": "This is method for find all depots",
+                "operationId": "findAllDepots",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Number of page",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "title": "data",
+                            "type": "object",
+                            "$ref": "#/definitions/Depot"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Depot"
+                ],
+                "summary": "Create new depot",
+                "description": "This is method create new depot",
+                "operationId": "storeDepot",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name of depot",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "owner_organization_id",
+                        "in": "query",
+                        "description": "ID owner organization",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation",
+                        "schema": {
+                            "title": "data",
+                            "type": "object",
+                            "$ref": "#/definitions/Unit"
+                        }
+                    }
+                }
+            }
+        },
+        "/depots/{id}": {
+            "get": {
+                "tags": [
+                    "Depot"
+                ],
+                "summary": "Return one depot",
+                "description": "This is method for find one depot by ID",
+                "operationId": "findDepot",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of depot",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "title": "data",
+                            "type": "object",
+                            "$ref": "#/definitions/Depot"
+                        }
+                    },
+                    "404": {
+                        "description": "Item not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Depot"
+                ],
+                "summary": "Update depot",
+                "description": "This is method update depot by ID",
+                "operationId": "updateDepot",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of depot",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name of depot",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "owner_organization_id",
+                        "in": "query",
+                        "description": "Owner organization of depot",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation",
+                        "schema": {
+                            "title": "data",
+                            "type": "object",
+                            "$ref": "#/definitions/Depot"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Depot"
+                ],
+                "summary": "Remove depot by ID",
+                "description": "This is method remove depot",
+                "operationId": "destroyDepot",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID depot for remove",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "bad request"
+                    }
+                }
+            }
+        },
         "/items": {
             "get": {
                 "tags": [
@@ -37,6 +227,63 @@
                 ],
                 "responses": {
                     "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "title": "data",
+                            "type": "object",
+                            "$ref": "#/definitions/Item"
+                        }
+                    }
+                }
+            }
+        },
+        "/items/": {
+            "post": {
+                "tags": [
+                    "Item"
+                ],
+                "summary": "Create new item",
+                "description": "This is method create new item",
+                "operationId": "storeItem",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name of item",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "alias",
+                        "in": "query",
+                        "description": "Alias of item",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "group_id",
+                        "in": "query",
+                        "description": "ID group of item (exists)",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "is_available",
+                        "in": "query",
+                        "description": "-",
+                        "required": true,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "unit_id",
+                        "in": "query",
+                        "description": "Unit id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "201": {
                         "description": "successful operation",
                         "schema": {
                             "title": "data",
@@ -72,12 +319,396 @@
                             "type": "object",
                             "$ref": "#/definitions/Item"
                         }
+                    },
+                    "404": {
+                        "description": "Item not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Item"
+                ],
+                "summary": "Return one item",
+                "description": "This is method for update field in item by ID",
+                "operationId": "updateItem",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Name of item",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name of item",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "alias",
+                        "in": "query",
+                        "description": "Alias of item",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "group_id",
+                        "in": "query",
+                        "description": "ID group of item (exists)",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "is_available",
+                        "in": "query",
+                        "description": "-",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "unit_id",
+                        "in": "query",
+                        "description": "Unit id",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "title": "data",
+                            "type": "object",
+                            "$ref": "#/definitions/Item"
+                        }
+                    },
+                    "404": {
+                        "description": "Item not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Item"
+                ],
+                "summary": "Remove item by ID",
+                "description": "This is method remove item",
+                "operationId": "destroyItem",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID item for remove",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "bad request"
+                    }
+                }
+            }
+        },
+        "/units/": {
+            "get": {
+                "tags": [
+                    "Unit"
+                ],
+                "summary": "Return all units with pagination",
+                "description": "This is method for find all units",
+                "operationId": "findAllUnits",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Number of page",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "title": "data",
+                            "type": "object",
+                            "$ref": "#/definitions/Unit"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Unit"
+                ],
+                "summary": "Create new unit",
+                "description": "This is method create new unit",
+                "operationId": "storeUnit",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name of unit",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "designation",
+                        "in": "query",
+                        "description": "Designation of unit",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "decimal_symbol_count",
+                        "in": "query",
+                        "description": "Count symbols",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "min_value",
+                        "in": "query",
+                        "description": "-",
+                        "required": false,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation",
+                        "schema": {
+                            "title": "data",
+                            "type": "object",
+                            "$ref": "#/definitions/Unit"
+                        }
+                    }
+                }
+            }
+        },
+        "/units/{id}": {
+            "get": {
+                "tags": [
+                    "Unit"
+                ],
+                "summary": "Return one unit",
+                "description": "This is method for find one unit by ID",
+                "operationId": "findUnit",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of item",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "title": "data",
+                            "type": "object",
+                            "$ref": "#/definitions/Item"
+                        }
+                    },
+                    "404": {
+                        "description": "Item not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Unit"
+                ],
+                "summary": "Update unit",
+                "description": "This is method update unit by ID",
+                "operationId": "updateUnit",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of unit",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name of unit",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "designation",
+                        "in": "query",
+                        "description": "Designation of unit",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "decimal_symbol_count",
+                        "in": "query",
+                        "description": "Count symbols",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "name": "min_value",
+                        "in": "query",
+                        "description": "-",
+                        "required": false,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation",
+                        "schema": {
+                            "title": "data",
+                            "type": "object",
+                            "$ref": "#/definitions/Unit"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Unit"
+                ],
+                "summary": "Remove unit by ID",
+                "description": "This is method remove unit",
+                "operationId": "destroyUnit",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID unit for remove",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "bad request"
                     }
                 }
             }
         }
     },
     "definitions": {
+        "DepotItemOperation": {
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "item_id": {
+                                "type": "integer"
+                            },
+                            "depot_id": {
+                                "type": "integer"
+                            },
+                            "depot_item_id": {
+                                "type": "integer"
+                            },
+                            "status": {
+                                "type": "string"
+                            },
+                            "type": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "DepotItem": {
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "depot_id": {
+                                "type": "integer"
+                            },
+                            "item_id": {
+                                "type": "integer"
+                            },
+                            "amount": {
+                                "type": "numeric"
+                            },
+                            "created_at": {
+                                "type": "string",
+                                "format": "dateTime"
+                            },
+                            "updated_at": {
+                                "type": "string",
+                                "format": "dateTime"
+                            },
+                            "deleted_at": {
+                                "type": "string",
+                                "format": "dateTime"
+                            }
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "Depot": {
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "owner_organization_id": {
+                                "type": "integer"
+                            },
+                            "created_at": {
+                                "type": "string",
+                                "format": "dateTime"
+                            },
+                            "updated_at": {
+                                "type": "string",
+                                "format": "dateTime"
+                            },
+                            "deleted_at": {
+                                "type": "string",
+                                "format": "dateTime"
+                            }
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "Item": {
             "properties": {
                 "data": {
@@ -110,6 +741,30 @@
                             },
                             "unit_id": {
                                 "type": "integer"
+                            }
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "Unit": {
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            },
+                            "decimal_symbols_count": {
+                                "type": "numeric"
                             }
                         }
                     }

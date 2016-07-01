@@ -47,6 +47,59 @@ class ItemsController extends BaseController
         return $this->response->paginator($items, new ItemsTransformer);
     }
 
+    /**
+     * @SWG\Post(
+     *     path="/items/",
+     *     summary="Create new item",
+     *     tags={"Item"},
+     *     description="This is method create new item",
+     *     operationId="storeItem",
+     *     @SWG\Parameter(
+     *          description="Name of item",
+     *          name="name",
+     *          in="query",
+     *          required=true,
+     *          type="string"
+     *     ),
+     *     @SWG\Parameter(
+     *          description="Alias of item",
+     *          name="alias",
+     *          in="query",
+     *          required=true,
+     *          type="string"
+     *     ),
+     *     @SWG\Parameter(
+     *          description="ID group of item (exists)",
+     *          name="group_id",
+     *          in="query",
+     *          required=true,
+     *          type="integer"
+     *     ),
+     *     @SWG\Parameter(
+     *          description="-",
+     *          name="is_available",
+     *          in="query",
+     *          required=true,
+     *          type="boolean"
+     *     ),
+     *     @SWG\Parameter(
+     *          description="Unit id",
+     *          name="unit_id",
+     *          in="query",
+     *          required=true,
+     *          type="integer"
+     *     ),
+     *     @SWG\Response(
+     *          response=201,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *             title="data",
+     *             type="object",
+     *             ref="#/definitions/Item"
+     *          )
+     *     )
+     * )
+     */
     public function store(ItemsStoreRequest $request)
     {
         $fields = $request->all();
@@ -76,7 +129,11 @@ class ItemsController extends BaseController
      *             type="object",
      *             ref="#/definitions/Item"
      *          )
-     *     )
+     *     ),
+     *     @SWG\Response(
+     *         response="404",
+     *         description="Item not found"
+     *     ),
      * )
      */
 
@@ -89,6 +146,71 @@ class ItemsController extends BaseController
         $this->response->errorNotFound();
     }
 
+    /**
+     * @SWG\Put(
+     *     path="/items/{id}",
+     *     summary="Return one item",
+     *     tags={"Item"},
+     *     description="This is method for update field in item by ID",
+     *     operationId="updateItem",
+     *     @SWG\Parameter(
+     *          description="Name of item",
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *     ),
+     *     @SWG\Parameter(
+     *          description="Name of item",
+     *          name="name",
+     *          in="query",
+     *          required=false,
+     *          type="string"
+     *     ),
+     *     @SWG\Parameter(
+     *          description="Alias of item",
+     *          name="alias",
+     *          in="query",
+     *          required=false,
+     *          type="string"
+     *     ),
+     *     @SWG\Parameter(
+     *          description="ID group of item (exists)",
+     *          name="group_id",
+     *          in="query",
+     *          required=false,
+     *          type="integer"
+     *     ),
+     *     @SWG\Parameter(
+     *          description="-",
+     *          name="is_available",
+     *          in="query",
+     *          required=false,
+     *          type="boolean"
+     *     ),
+     *     @SWG\Parameter(
+     *          description="Unit id",
+     *          name="unit_id",
+     *          in="query",
+     *          required=false,
+     *          type="integer"
+     *     ),
+     *     @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *             title="data",
+     *             type="object",
+     *             ref="#/definitions/Item"
+     *          )
+     *     ),
+     *     @SWG\Response(
+     *          response=404,
+     *          description="Item not found"
+     *     )
+     * )
+     */
+
     public function update($id, ItemsUpdateRequest $request)
     {
         $fields = $request->all();
@@ -98,6 +220,31 @@ class ItemsController extends BaseController
         }
         $this->response->errorNotFound('Item not found.');
     }
+
+    /**
+     * @SWG\Delete(
+     *     path="/items/{id}",
+     *     summary="Remove item by ID",
+     *     tags={"Item"},
+     *     description="This is method remove item",
+     *     operationId="destroyItem",
+     *     @SWG\Parameter(
+     *          description="ID item for remove",
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *     ),
+     *     @SWG\Response(
+     *          response=204,
+     *          description="successful operation"
+     *     ),
+     *     @SWG\Response(
+     *          response=400,
+     *          description="bad request"
+     *     )
+     * )
+     */
 
     public function destroy($id)
     {
