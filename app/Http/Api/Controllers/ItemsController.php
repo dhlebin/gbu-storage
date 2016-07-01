@@ -23,7 +23,7 @@ class ItemsController extends BaseController
      *     description="This is method for find all items",
      *     operationId="findAllItems",
      *     @SWG\Parameter(
-     *          description="ID of item",
+     *          description="Number of page",
      *          name="page",
      *          in="query",
      *          required=false,
@@ -54,10 +54,39 @@ class ItemsController extends BaseController
         return $this->response->item($res, new ItemsTransformer)->setStatusCode(201);
     }
 
+    /**
+     * @SWG\Get(
+     *     path="/items/{id}",
+     *     summary="Return one item",
+     *     tags={"Item"},
+     *     description="This is method for find one item by ID",
+     *     operationId="findItem",
+     *     @SWG\Parameter(
+     *          description="ID of item",
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *     ),
+     *     @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *             title="data",
+     *             type="object",
+     *             ref="#/definitions/Item"
+     *          )
+     *     )
+     * )
+     */
+
     public function show($id)
     {
         $item = $this->itemsRepo->getById($id);
-        return $this->response->item($item, new ItemsTransformer);
+        if ($item) {
+            return $this->response->item($item, new ItemsTransformer);
+        }
+        $this->response->errorNotFound();
     }
 
     public function update($id, ItemsUpdateRequest $request)

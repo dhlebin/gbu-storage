@@ -30,8 +30,37 @@
                     {
                         "name": "page",
                         "in": "query",
-                        "description": "ID of item",
+                        "description": "Number of page",
                         "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "title": "data",
+                            "type": "object",
+                            "$ref": "#/definitions/Item"
+                        }
+                    }
+                }
+            }
+        },
+        "/items/{id}": {
+            "get": {
+                "tags": [
+                    "Item"
+                ],
+                "summary": "Return one item",
+                "description": "This is method for find one item by ID",
+                "operationId": "findItem",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of item",
+                        "required": true,
                         "type": "integer"
                     }
                 ],
