@@ -13,11 +13,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ItemAttribute extends Model
 {
     use SoftDeletes;
-
-    /**
-     * @todo add field group_id
-     * @var array
-     */
     protected $fillable = [
         'name',
         'alias',
