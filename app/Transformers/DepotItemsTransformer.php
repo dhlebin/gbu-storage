@@ -10,7 +10,7 @@ use League\Fractal\TransformerAbstract;
  *              @SWG\Property(property="id", type="integer"),
  *              @SWG\Property(property="depot_id", type="integer"),
  *              @SWG\Property(property="item_id", type="integer"),
- *              @SWG\Property(property="amount", type="numeric"),
+ *              @SWG\Property(property="amount", type="number"),
  *              @SWG\Property(property="created_at", type="string", format="dateTime"),
  *              @SWG\Property(property="updated_at", type="string", format="dateTime"),
  *              @SWG\Property(property="deleted_at", type="string", format="dateTime")

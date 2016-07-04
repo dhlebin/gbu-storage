@@ -99,6 +99,10 @@ class UnitsController extends BaseController
      *             type="object",
      *             ref="#/definitions/Unit"
      *          )
+     *     ),
+     *     @SWG\Response(
+     *          response=422,
+     *          description="Unprocessable Entity"
      *     )
      * )
      *
