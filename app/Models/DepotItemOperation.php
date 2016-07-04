@@ -20,9 +20,20 @@ class DepotItemOperation extends Model
         'type',
         'opposite_operation_id'
     ];
+
+    protected $appends = ['delta'];
+
+    protected $casts = [
+        'delta' => 'float'
+    ];
     
     public function depotItemTransactions() 
     {
         return $this->hasMany(DepotItemTransaction::class);
+    }
+
+    public function getDeltaAttribute()
+    {
+        return $this->depotItemTransactions()->groupBy('depot_item_operation_id')->sum('delta');
     }
 }

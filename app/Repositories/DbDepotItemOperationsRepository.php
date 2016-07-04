@@ -17,4 +17,9 @@ class DbDepotItemOperationsRepository extends BaseDbRepository implements  Depot
     {
         return DepotItemOperation::class;
     }
+
+    public function getList($condition = [], $columns = ['*'])
+    {
+        return $this->model->with('depotItemTransactions')->paginate(self::ITEMS_ON_PAGE, $columns);
+    }
 }

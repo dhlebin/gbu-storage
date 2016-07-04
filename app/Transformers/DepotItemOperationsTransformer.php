@@ -20,7 +20,8 @@ class DepotItemOperationsTransformer extends TransformerAbstract {
             'depot_item_id' => $item->depot_item_id,
             'status' => $item->status,
             'type' => $item->type,
-            'opposite_operation_id' => $item->opposite_operation_id
+            'opposite_operation_id' => $item->opposite_operation_id,
+            'delta' => $item->delta
         ];
     }
 }
