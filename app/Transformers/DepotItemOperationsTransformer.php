@@ -10,6 +10,22 @@ namespace App\Transformers;
 
 use League\Fractal\TransformerAbstract;
 
+/**
+ * @SWG\Definition(
+ *      definition="DepotItemOperation",
+ *      type="object",
+ *      @SWG\Property(property="data", type="array", @SWG\Items(
+ *              @SWG\Property(property="id", type="integer"),
+ *              @SWG\Property(property="item_id", type="integer"),
+ *              @SWG\Property(property="depot_id", type="integer"),
+ *              @SWG\Property(property="depot_item_id", type="integer"),
+ *              @SWG\Property(property="status", type="string"),
+ *              @SWG\Property(property="type", type="string")
+ *	 		)
+ *      )
+ * )
+ */
+
 class DepotItemOperationsTransformer extends TransformerAbstract {
 
     public function transform($item) {

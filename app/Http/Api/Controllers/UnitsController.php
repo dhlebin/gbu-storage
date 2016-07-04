@@ -20,6 +20,30 @@ class UnitsController extends BaseController
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *     path="/units/",
+     *     summary="Return all units with pagination",
+     *     tags={"Unit"},
+     *     description="This is method for find all units",
+     *     operationId="findAllUnits",
+     *     @SWG\Parameter(
+     *          description="Number of page",
+     *          name="page",
+     *          in="query",
+     *          required=false,
+     *          type="integer"
+     *     ),
+     *     @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *             title="data",
+     *             type="object",
+     *             ref="#/definitions/Unit"
+     *          )
+     *     )
+     * )
      */
     public function index()
     {
@@ -32,6 +56,56 @@ class UnitsController extends BaseController
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     *
+     * @SWG\Post(
+     *     path="/units/",
+     *     summary="Create new unit",
+     *     tags={"Unit"},
+     *     description="This is method create new unit",
+     *     operationId="storeUnit",
+     *     @SWG\Parameter(
+     *          description="Name of unit",
+     *          name="name",
+     *          in="query",
+     *          required=true,
+     *          type="string"
+     *     ),
+     *     @SWG\Parameter(
+     *          description="Designation of unit",
+     *          name="designation",
+     *          in="query",
+     *          required=false,
+     *          type="string"
+     *     ),
+     *     @SWG\Parameter(
+     *          description="Count symbols",
+     *          name="decimal_symbol_count",
+     *          in="query",
+     *          required=false,
+     *          type="number"
+     *     ),
+     *     @SWG\Parameter(
+     *          description="-",
+     *          name="min_value",
+     *          in="query",
+     *          required=false,
+     *          type="number"
+     *     ),
+     *     @SWG\Response(
+     *          response=201,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *             title="data",
+     *             type="object",
+     *             ref="#/definitions/Unit"
+     *          )
+     *     ),
+     *     @SWG\Response(
+     *          response=422,
+     *          description="Unprocessable Entity"
+     *     )
+     * )
+     *
      */
     public function store(UnitsStoreRequest $request)
     {
@@ -45,6 +119,35 @@ class UnitsController extends BaseController
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * @SWG\Get(
+     *     path="/units/{id}",
+     *     summary="Return one unit",
+     *     tags={"Unit"},
+     *     description="This is method for find one unit by ID",
+     *     operationId="findUnit",
+     *     @SWG\Parameter(
+     *          description="ID of item",
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *     ),
+     *     @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *             title="data",
+     *             type="object",
+     *             ref="#/definitions/Item"
+     *          )
+     *     ),
+     *     @SWG\Response(
+     *         response="404",
+     *         description="Item not found"
+     *     ),
+     * )
+     *
      */
     public function show($id)
     {
@@ -71,6 +174,59 @@ class UnitsController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * @SWG\Put(
+     *     path="/units/{id}",
+     *     summary="Update unit",
+     *     tags={"Unit"},
+     *     description="This is method update unit by ID",
+     *     operationId="updateUnit",
+     *     @SWG\Parameter(
+     *          description="ID of unit",
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *     ),
+     *     @SWG\Parameter(
+     *          description="Name of unit",
+     *          name="name",
+     *          in="query",
+     *          required=false,
+     *          type="string"
+     *     ),
+     *     @SWG\Parameter(
+     *          description="Designation of unit",
+     *          name="designation",
+     *          in="query",
+     *          required=false,
+     *          type="string"
+     *     ),
+     *     @SWG\Parameter(
+     *          description="Count symbols",
+     *          name="decimal_symbol_count",
+     *          in="query",
+     *          required=false,
+     *          type="number"
+     *     ),
+     *     @SWG\Parameter(
+     *          description="-",
+     *          name="min_value",
+     *          in="query",
+     *          required=false,
+     *          type="number"
+     *     ),
+     *     @SWG\Response(
+     *          response=201,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *             title="data",
+     *             type="object",
+     *             ref="#/definitions/Unit"
+     *          )
+     *     )
+     * )
+     *
      */
     public function update($id, UnitsUpdateRequest $request)
     {
@@ -86,6 +242,30 @@ class UnitsController extends BaseController
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     *
+     * @SWG\Delete(
+     *     path="/units/{id}",
+     *     summary="Remove unit by ID",
+     *     tags={"Unit"},
+     *     description="This is method remove unit",
+     *     operationId="destroyUnit",
+     *     @SWG\Parameter(
+     *          description="ID unit for remove",
+     *          name="id",
+     *          in="path",
+     *          required=true,
+     *          type="integer"
+     *     ),
+     *     @SWG\Response(
+     *          response=204,
+     *          description="successful operation"
+     *     ),
+     *     @SWG\Response(
+     *          response=400,
+     *          description="bad request"
+     *     )
+     * )
+     *
      */
     public function destroy($id)
     {
