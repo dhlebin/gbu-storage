@@ -172,7 +172,8 @@ class ItemGroupsController extends BaseController
      *          name="is_available",
      *          in="query",
      *          required=true,
-     *          type="boolean"
+     *          type="string",
+     *          enum={"0","1"}
      *     ),
      *     @SWG\Parameter(
                 description="Parent ID item group",
@@ -283,7 +284,8 @@ class ItemGroupsController extends BaseController
      *          name="is_available",
      *          in="query",
      *          required=false,
-     *          type="boolean"
+     *          type="string",
+     *          enum={"0","1"}
      *     ),
      *     @SWG\Parameter(
                 description="Parent ID item group",
