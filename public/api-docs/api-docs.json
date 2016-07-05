@@ -12,7 +12,7 @@
         },
         "version": "1.0.0"
     },
-    "host": "depot.esmc.info",
+    "host": "localhost:8081",
     "basePath": "/api/v1",
     "schemes": [
         "http"
@@ -1357,7 +1357,11 @@
                         "in": "query",
                         "description": "ID of user role",
                         "required": true,
-                        "type": "boolean"
+                        "type": "string",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
                     },
                     {
                         "name": "parent_id",
@@ -1457,7 +1461,11 @@
                         "in": "query",
                         "description": "ID of user role",
                         "required": false,
-                        "type": "boolean"
+                        "type": "string",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
                     },
                     {
                         "name": "parent_id",
@@ -1578,7 +1586,31 @@
                         "in": "query",
                         "description": "-",
                         "required": true,
-                        "type": "boolean"
+                        "type": "string",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "attributes.*.id",
+                        "in": "body",
+                        "description": "-",
+                        "required": true,
+                        "schema": {
+                            "title": "data",
+                            "type": "Array"
+                        }
+                    },
+                    {
+                        "name": "attributes.*.value",
+                        "in": "body",
+                        "description": "-",
+                        "required": true,
+                        "schema": {
+                            "title": "data",
+                            "type": "Array"
+                        }
                     },
                     {
                         "name": "unit_id",
@@ -1672,7 +1704,11 @@
                         "in": "query",
                         "description": "-",
                         "required": false,
-                        "type": "boolean"
+                        "type": "string",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
                     },
                     {
                         "name": "unit_id",

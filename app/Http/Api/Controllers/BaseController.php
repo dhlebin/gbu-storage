@@ -8,7 +8,7 @@ use Illuminate\Routing\Controller;
 /**
  * @SWG\Swagger(
  *     schemes={"http"},
- *     host="localhost:8081",
+ *     host="depot.esmc.info",
  *     basePath="/api/v1",
  *     @SWG\Info(
  *         version="1.0.0",
