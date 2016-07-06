@@ -123,7 +123,7 @@ class DepotItemOperationsController extends BaseController
     public function store(StoreRequest $request) {
         $fields = $request->all();
         $res = $this->repository->store($fields);
-        return $this->response->item($res, new DepotItemOperationsTransformer());
+        return $this->response->item($res, new DepotItemOperationsTransformer())->setStatusCode(201);
     }
 
     /**
@@ -156,7 +156,7 @@ class DepotItemOperationsController extends BaseController
      * )
      */
     public function show($id) {
-        $res = $this->depotItemOperations->getById($id);
+        $res = $this->repository->getById($id);
         if ($res)
             return $this->response->item($res, new DepotItemOperationsTransformer());
         $this->response->errorNotFound();

@@ -60,19 +60,11 @@ class ItemGroupTest extends TestCase
 
     /**
      * @depends testStore
-     */
-    public function testDelete($testId)
-    {
-        $this->delete($this->url . $testId)->assertResponseStatus(204);
-    }
-
-    /**
-     * @depends testStore
      * 
      */
     public function testParent($testId) 
     {
-        $this->get($this->url . $testId . '/parent')->seeJsonContains(['id' => $testId]);
+        $this->get($this->url . $testId . '/parent')->seeJsonContains(['id' => $this->realParentId]);
     }
 
     /**
@@ -91,5 +83,13 @@ class ItemGroupTest extends TestCase
     public function testAncestors($testId)
     {
         $this->get($this->url . $testId . '/ancestors')->seeJsonContains(['id' => $this->realParentId]);
+    }
+
+    /**
+     * @depends testStore
+     */
+    public function testDelete($testId)
+    {
+        $this->delete($this->url . $testId)->assertResponseStatus(204);
     }
 }
