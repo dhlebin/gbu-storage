@@ -11,7 +11,8 @@
         "dingo/api": "1.0.x@dev",
         "barryvdh/laravel-ide-helper": "^2.2",
         "predis/predis": "^1.1",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "darkaonline/l5-swagger": "~3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
