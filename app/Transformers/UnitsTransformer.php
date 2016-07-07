@@ -33,7 +33,7 @@ class UnitsTransformer extends TransformerAbstract
 			'id' => $item->id,
 			'name' => $item->name,
 			'designation' => $item->designation,
-			'decimal_symbols_count' => $item->decimal_symbols_count,
+			'decimal_symbol_count' => $item->decimal_symbol_count,
             'min_value' => $item->min_value
 		];
 	}
