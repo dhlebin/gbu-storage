@@ -17,7 +17,7 @@ use League\Fractal\TransformerAbstract;
 	 *      @SWG\Property(property="id", type="integer"),
 	 *      @SWG\Property(property="name", type="string"),
 	 *      @SWG\Property(property="description", type="string"),
-	 *      @SWG\Property(property="decimal_symbols_count", type="numeric")
+	 *      @SWG\Property(property="decimal_symbol_count", type="numeric")
  *	 		)
  *      )
  * )
