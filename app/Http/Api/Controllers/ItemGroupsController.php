@@ -247,7 +247,11 @@ class ItemGroupsController extends BaseController
     public function show($id)
     {
         $item = $this->repository->getById($id);
-        return $this->response->item($item, new ItemGroupsTransformer);
+        if ($item) {
+            return $this->response->item($item, new ItemGroupsTransformer);
+        }
+
+        $this->response->errorNotFound();
     }
 
     /**
