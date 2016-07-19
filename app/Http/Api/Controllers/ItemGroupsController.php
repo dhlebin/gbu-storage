@@ -355,7 +355,7 @@ class ItemGroupsController extends BaseController
         if ($res) {
             return $this->response->noContent();
         } else {
-            $this->response->errorBadRequest();
+            $this->response->errorNotFound();
         }
     }
 }
