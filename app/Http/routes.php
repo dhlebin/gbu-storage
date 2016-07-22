@@ -5,6 +5,7 @@ Route::singularResourceParameters();
 $api = app('api.router');
 
 $api->version('v1', function (Dingo\Api\Routing\Router $api) {
+	$api->get('health_check', 'App\Http\Api\Controllers\BaseController@healthCheck');
     $api->group(
         [
             'namespace' => 'App\Http\Api\Controllers',
