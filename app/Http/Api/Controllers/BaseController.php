@@ -2,7 +2,6 @@
 
 namespace App\Http\Api\Controllers;
 
-use Dingo\Api\Http\Response;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Routing\Controller;
 
@@ -33,10 +32,4 @@ use Illuminate\Routing\Controller;
 class BaseController extends Controller
 {
     use Helpers;
-
-	function healthCheck() {
-		$response = new Response(null);
-
-		return $response->setStatusCode(200);
-	}
 }
