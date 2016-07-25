@@ -80,7 +80,28 @@ class ItemsController extends BaseController
      *          name="is_available",
      *          in="query",
      *          required=true,
-     *          type="boolean"
+     *          type="string",
+     *          enum={"0","1"}
+     *     ),
+     *     @SWG\Parameter(
+     *          description="-",
+     *          name="attributes.*.id",
+     *          in="body",
+     *          required=true,
+     *          schema=@SWG\Schema(
+     *             title="data",
+     *             type="Array"
+     *          )
+     *     ),
+     *     @SWG\Parameter(
+     *          description="-",
+     *          name="attributes.*.value",
+     *          in="body",
+     *          required=true,
+     *          schema=@SWG\Schema(
+     *             title="data",
+     *             type="Array"
+     *          )
      *     ),
      *     @SWG\Parameter(
      *          description="Unit id",
@@ -186,7 +207,8 @@ class ItemsController extends BaseController
      *          name="is_available",
      *          in="query",
      *          required=false,
-     *          type="boolean"
+     *          type="string",
+     *          enum={"0","1"}
      *     ),
      *     @SWG\Parameter(
      *          description="Unit id",
