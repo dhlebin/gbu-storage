@@ -21,7 +21,7 @@ class ItemGroupsController extends BaseController
 
     /**
      * @SWG\Get(
-     *     path="/item_groups/",
+     *     path="/itemgroups/",
      *     summary="Return all item groups with pagination",
      *     tags={"Item group"},
      *     description="This is method for find all item groups",
@@ -53,7 +53,7 @@ class ItemGroupsController extends BaseController
 
     /**
      * @SWG\Get(
-     *     path="/item_groups/{id}/parent",
+     *     path="/itemgroups/{id}/parent",
      *     summary="Return parent item group",
      *     tags={"Item group"},
      *     description="This is method for find parent item group",
@@ -84,7 +84,7 @@ class ItemGroupsController extends BaseController
 
     /**
      * @SWG\Get(
-     *     path="/item_groups/{id}/children",
+     *     path="/itemgroups/{id}/children",
      *     summary="Return children item group",
      *     tags={"Item group"},
      *     description="This is method for find children item group",
@@ -116,7 +116,7 @@ class ItemGroupsController extends BaseController
 
     /**
      * @SWG\Get(
-     *     path="/item_groups/{id}/ancestors",
+     *     path="/itemgroups/{id}/ancestors",
      *     summary="Return ancestors for item group",
      *     tags={"Item group"},
      *     description="This is method for find ancestors for item group",
@@ -361,7 +361,7 @@ class ItemGroupsController extends BaseController
         if ($res) {
             return $this->response->noContent();
         } else {
-            $this->response->errorBadRequest();
+            $this->response->errorNotFound();
         }
     }
 }
