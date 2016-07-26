@@ -9,7 +9,7 @@ $api->version('v1', function (Dingo\Api\Routing\Router $api) {
         $response = new Dingo\Api\Http\Response(null);
 
         return $response->setStatusCode(200);
-	});
+    });
 
     $api->group(
         [
