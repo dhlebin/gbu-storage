@@ -25,10 +25,10 @@ class UnitsUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-			'name' => 'max:255',
-			'designation' => 'max:50',
-			'decimal_symbol_count' => 'numeric',
-			'min_value' => 'numeric'
+            'name' => 'max:255',
+            'designation' => 'max:50',
+            'decimal_symbol_count' => 'numeric',
+            'min_value' => 'numeric'
         ];
     }
 }

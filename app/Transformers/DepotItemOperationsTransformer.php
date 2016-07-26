@@ -21,7 +21,7 @@ use League\Fractal\TransformerAbstract;
  *              @SWG\Property(property="depot_item_id", type="integer"),
  *              @SWG\Property(property="status", type="string"),
  *              @SWG\Property(property="type", type="string")
- *	 		)
+ *          )
  *      )
  * )
  */

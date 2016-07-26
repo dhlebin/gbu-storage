@@ -15,7 +15,7 @@ use League\Fractal\TransformerAbstract;
  *              @SWG\Property(property="updated_at", type="string", format="dateTime"),
  *              @SWG\Property(property="deleted_at", type="string", format="dateTime"),
  *              @SWG\Property(property="unit_id", type="integer")
- *	 		)
+ *          )
  *      )
  * )
  */

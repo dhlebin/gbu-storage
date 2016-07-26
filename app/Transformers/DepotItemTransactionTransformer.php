@@ -21,7 +21,7 @@ use League\Fractal\TransformerAbstract;
  *              @SWG\Property(property="delta", type="number"),
  *              @SWG\Property(property="date", type="string", format="dateTime"),
  *              @SWG\Property(property="user_id", type="integer")
- *	 		)
+ *          )
  *      )
  * )
  */

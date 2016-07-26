@@ -9,14 +9,14 @@ use App\Transformers\UnitsTransformer;
 
 class UnitsController extends BaseController
 {
-	protected $units;
+    protected $units;
 
-	public function __construct(Units $units)
-	{
-		$this->units = $units;
-	}
+    public function __construct(Units $units)
+    {
+        $this->units = $units;
+    }
 
-	/**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -48,7 +48,7 @@ class UnitsController extends BaseController
     public function index()
     {
         $units = $this->units->getList();
-		return $this->response->paginator($units, new UnitsTransformer);
+        return $this->response->paginator($units, new UnitsTransformer);
     }
 
     /**
@@ -110,8 +110,8 @@ class UnitsController extends BaseController
     public function store(UnitsStoreRequest $request)
     {
         $fields = $request->all();
-		$res = $this->units->store($fields);
-		return $this->response->item($res, new UnitsTransformer())->setStatusCode(201);
+        $res = $this->units->store($fields);
+        return $this->response->item($res, new UnitsTransformer())->setStatusCode(201);
     }
 
     /**
@@ -152,9 +152,9 @@ class UnitsController extends BaseController
     public function show($id)
     {
         $res = $this->units->getById($id);
-		if ($res) return $this->response->item($res, new UnitsTransformer);
+        if ($res) return $this->response->item($res, new UnitsTransformer);
 
-		$this->response->errorNotFound();
+        $this->response->errorNotFound();
     }
 
     /**
@@ -231,10 +231,10 @@ class UnitsController extends BaseController
     public function update($id, UnitsUpdateRequest $request)
     {
         $fields = $request->all();
-		$res = $this->units->update($id, $fields);
-		if ($res) return $this->response->item($res, new UnitsTransformer());
+        $res = $this->units->update($id, $fields);
+        if ($res) return $this->response->item($res, new UnitsTransformer());
 
-		$this->response->errorNotFound('Unit not found');
+        $this->response->errorNotFound('Unit not found');
     }
 
     /**
@@ -270,9 +270,9 @@ class UnitsController extends BaseController
     public function destroy($id)
     {
         $res = $this->units->remove($id);
-		if ($res)
-			return $this->response->noContent();
+        if ($res)
+            return $this->response->noContent();
 
-		$this->response->errorBadRequest();
+        $this->response->errorBadRequest();
     }
 }

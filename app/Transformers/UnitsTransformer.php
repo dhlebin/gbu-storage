@@ -14,11 +14,11 @@ use League\Fractal\TransformerAbstract;
  *      definition="Unit",
  *      type="object",
  *      @SWG\Property(property="data", type="array", @SWG\Items(
-	 *      @SWG\Property(property="id", type="integer"),
-	 *      @SWG\Property(property="name", type="string"),
-	 *      @SWG\Property(property="description", type="string"),
-	 *      @SWG\Property(property="decimal_symbol_count", type="numeric")
- *	 		)
+ *              @SWG\Property(property="id", type="integer"),
+ *              @SWG\Property(property="name", type="string"),
+ *              @SWG\Property(property="description", type="string"),
+ *              @SWG\Property(property="decimal_symbol_count", type="numeric")
+ *          )
  *      )
  * )
  *
@@ -27,14 +27,14 @@ use League\Fractal\TransformerAbstract;
 
 class UnitsTransformer extends TransformerAbstract
 {
-	public function transform($item)
-	{
-		return [
-			'id' => $item->id,
-			'name' => $item->name,
-			'designation' => $item->designation,
-			'decimal_symbols_count' => $item->decimal_symbols_count,
+    public function transform($item)
+    {
+        return [
+            'id' => $item->id,
+            'name' => $item->name,
+            'designation' => $item->designation,
+            'decimal_symbols_count' => $item->decimal_symbols_count,
             'min_value' => $item->min_value
-		];
-	}
+        ];
+    }
 }

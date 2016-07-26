@@ -10,5 +10,5 @@ namespace App\Contracts\Repositories;
 
 interface UnitsRepository extends BaseRepository
 {
-	
+    
 }

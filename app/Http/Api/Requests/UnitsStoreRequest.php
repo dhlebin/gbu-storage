@@ -25,9 +25,9 @@ class UnitsStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-			'designation' => 'max:50',
-			'decimal_symbol_count' => 'numeric',
-			'min_value' => 'numeric'
+            'designation' => 'max:50',
+            'decimal_symbol_count' => 'numeric',
+            'min_value' => 'numeric'
         ];
     }
 }

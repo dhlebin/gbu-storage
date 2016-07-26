@@ -16,7 +16,7 @@ use League\Fractal\TransformerAbstract;
  *              @SWG\Property(property="is_available", type="boolean"),
  *              @SWG\Property(property="parent_id", type="integer"),
  *              @SWG\Property(property="depth", type="integer")
- *	 		)
+ *          )
  *      )
  * )
  */
