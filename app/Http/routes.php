@@ -5,6 +5,12 @@ Route::singularResourceParameters();
 $api = app('api.router');
 
 $api->version('v1', function (Dingo\Api\Routing\Router $api) {
+    $api->get('health_check', function () {
+        $response = new Dingo\Api\Http\Response(null);
+
+        return $response->setStatusCode(200);
+    });
+
     $api->group(
         [
             'namespace' => 'App\Http\Api\Controllers',
